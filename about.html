@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>About HTTPS Everywhere for Chrome</title>
+    <link href="css/main.css" rel="stylesheet">
+    <script>
+        window.onload = function() {
+            chrome.extension.getBackgroundPage().chrome.extension.getManifest(function(manifest) {
+                document.getElementById('desc').innerText = manifest.description;
+                document.getElementById('version').innerText = manifest.version;
+            });
+        }
+    </script>
+</head>
+<body>
+<header>
+    <h1>About HTTPS Everywhere</h1>
+    <p id="promo">Encrypt the Web!</p>
+</header>
+
+<div id="content">
+<p id="desc"></p>
+
+<p>Version: <span id="version"></span></p>
+
+<p>Created by <a href="http://kcherenkov.net" target="_blank">Konstantin Cherenkov</a>.</p>
+
+<p>Idea: <a href="http://www.eff.org/https-everywhere" target="_blank">HTTPS Everywhere for Firefox</a> by Mike Perry and Peter
+    Eckersley.</p>
+
+<p>Ruleset librarians: Seth Schoen, Mike Cardwell and Andreas Jonsson.</p>
+</div>
+</body>
+</html>

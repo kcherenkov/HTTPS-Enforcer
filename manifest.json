@@ -1,0 +1,18 @@
+{
+    "name": "HTTPS Everywhere",
+    "version": "1.0",
+    "description": "HTTPS Everywhere encrypts your communications with a number of major websites.",
+    "icons": {
+        "16": "icons/lock_24.png",
+        "48": "icons/lock_48.png",
+        "128": "icons/lock_128.png"
+    },
+    "browser_action":
+    {
+        "default_icon": "icons/lock_24.png",
+        "default_popup": "popup.html"
+    },
+    "background_page": "background.html",
+    "options_page": "options.html",
+    "permissions": ["tabs", "http://*/*", "https://*/*", "cookies"]
+}

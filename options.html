@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <title>HTTPS Everywhere Options</title>
+    <link href="css/main.css" rel="stylesheet">
+    <style>
+        fieldset {
+            margin: 2em;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        var $ = function(id) {
+            return document.getElementById(id);
+        };
+        var storage = chrome.extension.getBackgroundPage().localStorage;
+
+        function ListenOnchange(id) {
+            if (storage[id] === 'true')
+                $(id).checked = 'checked';
+            $(id).onchange = function() {
+                storage[id] = this.checked;
+            };
+        }
+
+        window.onload = function() {
+            ListenOnchange('enableXhr');
+            ListenOnchange('sendNewSite');
+            ListenOnchange('secureCookies');
+            ListenOnchange('checkBeforeRedirect');
+        }
+    </script>
+</head>
+<body>
+<header>
+    <h1>HTTPS Everywhere Options</h1>
+</header>
+<div id="content">
+    <fieldset>
+        <legend>Behaviour on new sites</legend>
+        <p><label><input type="checkbox" id="enableXhr"/> Automatically detect new https sites and redirect to it</label></p>
+
+        <p><label><input type="checkbox" id="sendNewSite"/> Send new https sites to plugin`s author</label></p>
+
+        <p><label><input type="checkbox" id="secureCookies"/> Secure cookies on https sites</label></p>
+
+        <p><label><input type="checkbox" id="checkBeforeRedirect"/> Check https site for availability before redirect (may break some sites)</label></p>
+    </fieldset>
+</div>
+</body>
+</html>
