@@ -12,12 +12,11 @@ chrome.extension.getManifest = (function(callback) {
 });
 
 var version = localStorage['version'];
-if ('undefined' === typeof version) // first start
-{
-    createAndPopulateDatabase();
-    chrome.extension.getManifest(function(manifest) {
+chrome.extension.getManifest(function(manifest) {
         localStorage['version'] = manifest.version;
     });
+if ('undefined' === typeof version) // first start
+{
     localStorage['protectsCount'] = 0;
     localStorage['enableXhr'] = false;
     localStorage['sendNewSite'] = false;
@@ -25,7 +24,9 @@ if ('undefined' === typeof version) // first start
     localStorage['checkBeforeRedirect'] = false;
 }
 
-var db = openDatabase('https_everywhere', '1.0', 'HTTPS Everywhere data', 1024 * 1024);
+var db = openDatabase('https_everywhere', version, 'HTTPS Everywhere data', 1024 * 1024, function(database){
+    createAndPopulateDatabase();
+});
 var tabs = [];
 var a = document.createElement('a');    //global a element for retrieve parts of url, i.e. host, protocol, etc
 
@@ -357,7 +358,7 @@ function populateDatabase() {
 chrome.cookies.onChanged.addListener(function(changeInfo) {
     if (localStorage['secureCookies'] === 'true' && !changeInfo.cookie.removed && !changeInfo.cookie.secure) {
         db.readTransaction(function(tx) {
-            tx.executeSql('SELECT COUNT(*) AS c FROM "hosts" JOIN "rulesets" ON ("rulesets"."id"="hosts"."ruleset_id") JOIN "cookies" ON ("hosts"."ruleset_id"="cookies"."ruleset_id") WHERE "rulesets"."enabled" AND ? LIKE ("hosts"."host") AND ? REGEXP("cookies"."host") AND ? REGEXP ("cookies"."name")', [changeInfo.cookie.domain, changeInfo.cookie.domain, changeInfo.cookie.name],
+            tx.executeSql('SELECT COUNT(*) AS c FROM "hosts" JOIN "rulesets" ON ("rulesets"."id"="hosts"."ruleset_id") JOIN "cookies" ON ("hosts"."ruleset_id"="cookies"."ruleset_id") WHERE "rulesets"."enabled"="true" AND ? LIKE ("hosts"."host") AND ? REGEXP("cookies"."host") AND ? REGEXP ("cookies"."name")', [changeInfo.cookie.domain, changeInfo.cookie.domain, changeInfo.cookie.name],
                     function(tx, resultSet) {
                         if (resultSet.rows.item(0)['c'] > 0)
                             chrome.cookies.set(

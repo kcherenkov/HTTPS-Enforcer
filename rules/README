@@ -1,5 +1,3 @@
-https://gitweb.torproject.org/https-everywhere.git/tree/HEAD:/src/chrome/content/rules
-
 This directory contains web site rewriting rules for the
 HTTPS Everywhere software, available from
 https://www.eff.org/https-everywhere
