@@ -24,9 +24,10 @@ if ('undefined' === typeof version) // first start
     localStorage['checkBeforeRedirect'] = false;
 }
 
-var db = openDatabase('https_everywhere', version, 'HTTPS Everywhere data', 1024 * 1024, function(database){
+var db = openDatabase('https_everywhere', "1.0", 'HTTPS Everywhere data', 1024 * 1024, function(database){
     createAndPopulateDatabase();
 });
+
 var tabs = [];
 var a = document.createElement('a');    //global a element for retrieve parts of url, i.e. host, protocol, etc
 
