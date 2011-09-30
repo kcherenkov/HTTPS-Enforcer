@@ -357,7 +357,7 @@ function populateDatabase() {
 chrome.cookies.onChanged.addListener(function(changeInfo) {
     if (localStorage['secureCookies'] === 'true' && !changeInfo.cookie.removed && !changeInfo.cookie.secure) {
         db.readTransaction(function(tx) {
-            tx.executeSql('SELECT COUNT(*) AS c FROM "hosts" JOIN "cookies" ON ("hosts"."ruleset_id"="cookies"."ruleset_id") WHERE ? LIKE ("hosts"."host") AND ? REGEXP("cookies"."host") AND ? REGEXP ("cookies"."name")', [changeInfo.cookie.domain, changeInfo.cookie.domain, changeInfo.cookie.name],
+            tx.executeSql('SELECT COUNT(*) AS c FROM "hosts" JOIN "rulesets" ON ("rulesets"."id"="hosts"."ruleset_id") JOIN "cookies" ON ("hosts"."ruleset_id"="cookies"."ruleset_id") WHERE "rulesets"."enabled" AND ? LIKE ("hosts"."host") AND ? REGEXP("cookies"."host") AND ? REGEXP ("cookies"."name")', [changeInfo.cookie.domain, changeInfo.cookie.domain, changeInfo.cookie.name],
                     function(tx, resultSet) {
                         if (resultSet.rows.item(0)['c'] > 0)
                             chrome.cookies.set(
