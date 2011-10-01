@@ -12,9 +12,16 @@ chrome.extension.getManifest = (function(callback) {
 });
 
 var version = localStorage['version'];
+
+var db = openDatabase('https_everywhere', "1.0", 'HTTPS Everywhere data', 1024 * 1024, function(database) {
+    createAndPopulateDatabase();
+    localStorage['dbVersion'] = 'Sat, 01 Oct 2011 11:42:51 GMT';
+});
+
 chrome.extension.getManifest(function(manifest) {
     localStorage['version'] = manifest.version;
 });
+
 if ('undefined' === typeof version) // first start
 {
     localStorage['protectsCount'] = 0;
@@ -23,26 +30,22 @@ if ('undefined' === typeof version) // first start
     localStorage['secureCookies'] = true;
     localStorage['checkBeforeRedirect'] = false;
 }
-
-var db = openDatabase('https_everywhere', "1.0", 'HTTPS Everywhere data', 1024 * 1024, function(database) {
-    createAndPopulateDatabase();
-    localStorage['dbVersion'] = 'Sat, 01 Oct 2011 06:36:41 GMT';
-});
-
-checkDatabaseVersion(function(version) {
-    var currentVersion;
-    if ('undefined' === typeof localStorage['dbVersion'])
-        currentVersion = new Date(0);
-    else
-        currentVersion = new Date(localStorage['dbVersion']);
-    var serverVersion = new Date(version);
-    if (serverVersion > currentVersion) {
-        updateDatabase(function(success) {
-            if (success)
-                localStorage['dbVersion'] = version;
-        });
-    }
-});
+else {
+    checkDatabaseVersion(function(version) {
+        var currentVersion;
+        if ('undefined' === typeof localStorage['dbVersion'])
+            currentVersion = new Date(0);
+        else
+            currentVersion = new Date(localStorage['dbVersion']);
+        var serverVersion = new Date(version);
+        if (serverVersion > currentVersion) {
+            updateDatabase(function(success) {
+                if (success)
+                    localStorage['dbVersion'] = version;
+            });
+        }
+    });
+}
 
 var tabs = [];
 var a = document.createElement('a');    //global a element for retrieve parts of url, i.e. host, protocol, etc
@@ -58,7 +61,7 @@ const yellow = [230, 230, 120, 250];
 function disableRuleset(ruleset_id, host) {
     db.transaction(function(tx) {
         tx.executeSql('UPDATE "rulesets" SET "enabled" = ? WHERE "id" = ?', [false, ruleset_id]);
-    }, null);
+    });
 
     if (localStorage['sendNewSite'] === 'true') {
         reportSite(host, 'del');
@@ -329,15 +332,24 @@ function createAndPopulateDatabase() {
             db.transaction(function(tx) {
                 for (var key in queries)
                     tx.executeSql(queries[key]);
-            }, null, function(tx) {
-                populateDatabase('db.xml');
+            }, null, function() {
+                populateDatabase('db.xml', function() {
+                    //  When you are entering data into a new table which has indexes on it,
+                    //  this can be much slower than entering all the data first, and then creating the index.
+                    db.transaction(function(tx) {
+                        var tableNames = ['hosts', 'rules', 'cookies', 'exclusions'];
+                        for (var key in tableNames)
+                            tx.executeSql('CREATE INDEX "' + tableNames[key] + '_ruleset_id_index" ON "' + tableNames[key] + '" ("ruleset_id")');
+                        tx.executeSql('CREATE INDEX "hosts_host_index" ON "hosts" ("host")');
+                    });
+                });
             });
         }
     };
     xhr.send();
 }
 
-function populateDatabase(source) {
+function populateDatabase(source, successCallback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', source, true);
     xhr.onreadystatechange = function() {
@@ -384,15 +396,12 @@ function populateDatabase(source) {
                             }
                     );
                 }
-            }, null, function(tx) {
-                //  When you are entering data into a new table which has indexes on it,
-                //  this can be much slower than entering all the data first, and then creating the index.
+            }, null, function() {
                 db.transaction(function(tx) {
                     tx.executeSql('UPDATE "hosts" SET "host" = REPLACE ("host", "*", "%")');    //for LIKE statements
-                    var tableNames = ['hosts', 'rules', 'cookies', 'exclusions'];
-                    for (var key in tableNames)
-                        tx.executeSql('CREATE INDEX "' + tableNames[key] + '_ruleset_id_index" ON "' + tableNames[key] + '" ("ruleset_id")');
-                    tx.executeSql('CREATE INDEX "hosts_host_index" ON "hosts" ("host")');
+                }, null, function() {
+                    if ('undefined' !== typeof successCallback)
+                        successCallback();
                 });
             });
         }
