@@ -9,6 +9,7 @@
                 document.getElementById('desc').innerText = manifest.description;
                 document.getElementById('version').innerText = manifest.version;
             });
+            document.getElementById('dbVersion').innerText = localStorage['dbVersion'];
         }
     </script>
 </head>
@@ -22,6 +23,8 @@
 <p id="desc"></p>
 
 <p>Version: <span id="version"></span></p>
+
+<p>Database version: <span id="dbVersion"></span></p>
 
 <p>Created by <a href="http://kcherenkov.net" target="_blank">Konstantin Cherenkov</a>.</p>
 
