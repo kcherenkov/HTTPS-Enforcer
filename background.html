@@ -30,7 +30,8 @@ if ('undefined' === typeof version) // first start
     localStorage['secureCookies'] = true;
     localStorage['checkBeforeRedirect'] = false;
 }
-else {
+else if ('undefined' === typeof localStorage['lastDbCheck'] ||
+        (new Date() - new Date(localStorage['lastDbCheck'])) / (1000 * 60 * 60) > 6) {
     checkDatabaseVersion(function(version) {
         var currentVersion;
         if ('undefined' === typeof localStorage['dbVersion'])
@@ -38,10 +39,13 @@ else {
         else
             currentVersion = new Date(localStorage['dbVersion']);
         var serverVersion = new Date(version);
+        localStorage['lastDbCheck'] = new Date().toUTCString();
         if (serverVersion > currentVersion) {
             updateDatabase(function(success) {
                 if (success)
+                {
                     localStorage['dbVersion'] = version;
+                }
             });
         }
     });
