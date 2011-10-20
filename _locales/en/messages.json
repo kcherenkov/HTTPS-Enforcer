@@ -1,0 +1,34 @@
+{
+    "extDescription": {"message": "HTTPS Everywhere encrypts your communications with a number of major websites."},
+
+    "optionsTitle": {"message": "HTTPS Everywhere Options"},
+    "optionsHeader": {"message": "HTTPS Everywhere Options"},
+    "enableXhr": {"message": "Automatically detect new https sites and redirect to it"},
+    "sendNewSite": {"message": "Send new https sites to plugin`s author"},
+    "secureCookies": {"message": "Secure cookies on https sites"},
+    "checkBeforeRedirect": {"message": "Check https site for availability before redirect (may break some sites)"},
+
+    "protectsCount": {"message": "Protections count"},
+    "options": {"message": "Options"},
+    "rules": {"message": "Rules"},
+    "about": {"message": "About"},
+    "enabled": {"message": "Enabled"},
+    "disabled": {"message": "Disabled"},
+
+    "aboutTitle": {"message": "About HTTPS Everywhere for Chrome"},
+    "aboutHeader": {"message": "About HTTPS Everywhere"},
+    "version": {"message": "Version"},
+    "dbVersion": {"message": "Database version"},
+    "author": {"message": "Created by"},
+    "idea": {"message": "Idea"},
+    "rulesets": {"message": "Ruleset librarians"},
+
+    "rulesTitle": {"message": "HTTPS Everywhere Rules"},
+    "rulesHeader": {"message": "HTTPS Everywhere Rules"},
+    "rulesName": {"message": "Name"},
+    "rulesStatus": {"message": "Status"},
+
+    "notificationDismiss": {"message": "Dismiss notification"},
+    "notificationSomethingWrong": {"message": "Something wrong? You can"},
+    "notificationReturnBack": {"message": "return back to non-secure version"}
+}

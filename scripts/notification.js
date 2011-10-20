@@ -8,7 +8,9 @@ var nclose = $.createElement("span");
 nclose.className = "notify-close";
 
 var nclosea = $.createElement("a");
-nclosea.title = "dismiss this notification";
+nclosea.title = chrome.i18n.getMessage("notificationDismiss");
+var somethingWrong = chrome.i18n.getMessage("notificationSomethingWrong") + ' ';
+var returnBack = chrome.i18n.getMessage("notificationReturnBack");
 nclosea.innerText = "\u00D7";
 nclosea.onclick = function() {
     $.body.removeChild(ndiv);
@@ -16,7 +18,7 @@ nclosea.onclick = function() {
 nclose.appendChild(nclosea);
 
 var ntext = $.createElement("span");
-ntext.innerHTML = 'Something wrong? You can <a id="backUrl" href="' + backUrl + '">return back to non secure version</a>';
+ntext.innerHTML = somethingWrong + '<a id="backUrl" href="' + backUrl + '">'+returnBack+'</a>';
 
 ndiv.appendChild(nclose);
 ndiv.appendChild(ntext);

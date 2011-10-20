@@ -79,6 +79,8 @@
         var db = bg.db;
         const checkmark = '\u2714';
         const ballotx = '\u2718';
+        var enabledL = chrome.i18n.getMessage("enabled");
+        var disabledL = chrome.i18n.getMessage("disabled");
         window.onload = function() {
             $('protectsCount').innerText = storage['protectsCount'];
             var list = $('list');
@@ -93,7 +95,7 @@
                         tx.executeSql('UPDATE "rulesets" SET "enabled" = ? WHERE "id" = ?', [!enabled, id]);
                     }, null, function(tx){
                         e.target.innerText = enabled ? ballotx : checkmark;
-                        e.target.title = enabled ? 'Disabled' : 'Enabled';
+                        e.target.title = enabled ? disabledL : enabledL;
                     });
                 }
             });
@@ -117,31 +119,35 @@
                             var enabled = resultSet.rows.item(i)["enabled"] === 'true';
                             ruleset.id = resultSet.rows.item(i)["id"];
                             ruleset.innerHTML = '<span class="text">' + resultSet.rows.item(i)["name"] + '</span>'
-                                    + '<span class="shortcut" title="'+ (enabled ? 'Enabled' : 'Disabled') +'">' + (enabled ? checkmark : ballotx) + '</span>';
+                                    + '<span class="shortcut" title="'+ (enabled ? enabledL : disabledL) +'">' + (enabled ? checkmark : ballotx) + '</span>';
                             list.insertBefore(ruleset, sep);
                         }
                     });
                 });
             });
+            $('protectsCountS').innerText = chrome.i18n.getMessage("protectsCount");
+            $('options').innerText = chrome.i18n.getMessage("options");
+            $('rules').innerText = chrome.i18n.getMessage("rules");
+            $('about').innerText = chrome.i18n.getMessage("about");
         }
     </script>
 </head>
 <body>
 <ul id="list">
     <li class="menu protectsCount">
-        <span class="text">Protections count</span>
+        <span id="protectsCountS" class="text"></span>
         <span class="shortcut" id="protectsCount"></span>
     </li>
     <div id="sep" class="separator"></div>
     <li>
-        <a href="options.html" target="_blank" class="menu">Options</a>
+        <a href="options.html" target="_blank" id="options" class="menu"></a>
     </li>
     <li>
-        <a href="rules.html" target="_blank" class="menu">Rules</a>
+        <a href="rules.html" target="_blank" id="rules" class="menu"></a>
     </li>
     <div class="separator"></div>
     <li>
-        <a href="about.html" target="_blank" class="menu">About</a>
+        <a href="about.html" target="_blank" id="about" class="menu"></a>
     </li>
 </ul>
 </body>

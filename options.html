@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>HTTPS Everywhere Options</title>
+    <title id="optionsTitle"></title>
     <link href="css/main.css" rel="stylesheet">
     <style>
         fieldset {
@@ -28,23 +28,29 @@
             ListenOnchange('sendNewSite');
             ListenOnchange('secureCookies');
             ListenOnchange('checkBeforeRedirect');
+
+            $('enableXhrL').innerText = ' ' + chrome.i18n.getMessage("enableXhr");
+            $('sendNewSiteL').innerText = ' ' + chrome.i18n.getMessage("sendNewSite");
+            $('secureCookiesL').innerText = ' ' + chrome.i18n.getMessage("secureCookies");
+            $('checkBeforeRedirectL').innerText = ' ' + chrome.i18n.getMessage("checkBeforeRedirect");
+            $('optionsHeader').innerText = chrome.i18n.getMessage("optionsHeader");
+            $('optionsTitle').innerText = chrome.i18n.getMessage("optionsTitle");
         }
     </script>
 </head>
 <body>
 <header>
-    <h1>HTTPS Everywhere Options</h1>
+    <h1 id="optionsHeader"></h1>
 </header>
 <div id="content">
     <fieldset>
-        <legend>Behaviour on new sites</legend>
-        <p><label><input type="checkbox" id="enableXhr"/> Automatically detect new https sites and redirect to it</label></p>
+        <p><input type="checkbox" id="enableXhr"/><label id="enableXhrL" for="enableXhr"></label></p>
 
-        <p><label><input type="checkbox" id="sendNewSite"/> Send new https sites to plugin`s author</label></p>
+        <p><input type="checkbox" id="sendNewSite"/><label id="sendNewSiteL" for="sendNewSite"></label></p>
 
-        <p><label><input type="checkbox" id="secureCookies"/> Secure cookies on https sites</label></p>
+        <p><input type="checkbox" id="secureCookies"/><label id="secureCookiesL" for="secureCookies"></label></p>
 
-        <p><label><input type="checkbox" id="checkBeforeRedirect"/> Check https site for availability before redirect (may break some sites)</label></p>
+        <p><input type="checkbox" id="checkBeforeRedirect"/><label id="checkBeforeRedirectL" for="checkBeforeRedirect"></label></p>
     </fieldset>
 </div>
 </body>

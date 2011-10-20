@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>HTTPS Everywhere Rules</title>
+    <title id="rulesTitle"></title>
     <link href="css/main.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/demo_table.css"/>
     <style type="text/css">
@@ -28,8 +28,9 @@
     </script>
     <script>
         var db = chrome.extension.getBackgroundPage().db;
+        var rulesNameL = chrome.i18n.getMessage("rulesName");
+        var rulesStatusL = chrome.i18n.getMessage("rulesStatus");
         db.readTransaction(function(tx) {
-
             tx.executeSql('SELECT * FROM "rulesets"', [],
                     function(tx, resultSet) {
                         var data = [];
@@ -42,16 +43,18 @@
                                     });
                         }
                         $(function() {
+                            var lang = navigator.language === "ru"?{"sUrl": "scripts/dataTables.russian.json"}:{};
                             var oTable = $('#rulesets').dataTable({
                                 "aaData": data,
+                                "oLanguage": lang,
                                 "aoColumns": [
                                     {   "sTitle": "",
                                         "bSearchable": false,
                                         "bSortable": false,
                                         "sClass": "details"
                                     },
-                                    { "sTitle": "Name" },
-                                    { "sTitle": "Enabled",
+                                    { "sTitle": rulesNameL },
+                                    { "sTitle": rulesStatusL,
                                         "bSearchable": false,
                                         "sClass" : "enabled",
                                         "fnRender": function(obj) {
@@ -149,22 +152,22 @@
                     isEnabled = true;
                 else if (this.innerText === ballotx)
                     isEnabled = false;
-                console.log(this.innerText);
-                console.log(isEnabled);
                 db.transaction(function(tx) {
                     tx.executeSql('UPDATE "rulesets" SET "enabled" = ? WHERE "id" = ?', [!isEnabled, id],
                             function(tx, resultSet) {
-                                console.log('success');
                                 td.innerHTML = isEnabled ? ballotx : checkmark;
                             });
                 });
             });
+
+            document.getElementById('rulesTitle').innerText = chrome.i18n.getMessage("rulesTitle");
+            document.getElementById('rulesHeader').innerText = chrome.i18n.getMessage("rulesHeader");
         });
     </script>
 
 </head>
 <body>
-<header><h1>HTTPS Everywhere Rules</h1></header>
+<header><h1 id="rulesHeader"></h1></header>
 <table id="rulesets" class="display">
 </table>
 </body>

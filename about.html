@@ -1,37 +1,50 @@
 <!doctype html>
 <html>
 <head>
-    <title>About HTTPS Everywhere for Chrome</title>
+    <title id="aboutTitle"></title>
     <link href="css/main.css" rel="stylesheet">
     <script>
+        var $ = function(id) {
+            return document.getElementById(id);
+        };
         window.onload = function() {
             chrome.extension.getBackgroundPage().chrome.extension.getManifest(function(manifest) {
-                document.getElementById('desc').innerText = manifest.description;
+                document.getElementById('desc').innerText = chrome.i18n.getMessage("extDescription");
                 document.getElementById('version').innerText = manifest.version;
             });
-            document.getElementById('dbVersion').innerText = localStorage['dbVersion'];
+            document.getElementById('dbVersion').innerText = new Date(localStorage['dbVersion']).toLocaleDateString();
+            $('aboutTitle').innerText = chrome.i18n.getMessage("aboutTitle");
+            $('aboutHeader').innerText = chrome.i18n.getMessage("aboutHeader");
+            $('versionL').innerText = chrome.i18n.getMessage("version");
+            $('dbVersionL').innerText = chrome.i18n.getMessage("dbVersion");
+            $('authorL').innerText = chrome.i18n.getMessage("author");
+            $('ideaL').innerText = chrome.i18n.getMessage("idea");
+            $('rulesetsL').innerText = chrome.i18n.getMessage("rulesets");
         }
     </script>
 </head>
 <body>
 <header>
-    <h1>About HTTPS Everywhere</h1>
+    <h1 id="aboutHeader"></h1>
+
     <p id="promo">Encrypt the Web!</p>
 </header>
 
 <div id="content">
-<p id="desc"></p>
+    <p id="desc"></p>
 
-<p>Version: <span id="version"></span></p>
+    <p><span id="versionL"></span>: <span id="version"></span></p>
 
-<p>Database version: <span id="dbVersion"></span></p>
+    <p><span id="dbVersionL"></span>: <span id="dbVersion"></span></p>
 
-<p>Created by <a href="http://kcherenkov.net" target="_blank">Konstantin Cherenkov</a>.</p>
+    <p><span id="authorL"></span>: <a href="http://kcherenkov.net" target="_blank">Konstantin Cherenkov</a>.</p>
 
-<p>Idea: <a href="http://www.eff.org/https-everywhere" target="_blank">HTTPS Everywhere for Firefox</a> by Mike Perry and Peter
-    Eckersley.</p>
+    <p><span id="ideaL"></span>: <a href="http://www.eff.org/https-everywhere" target="_blank">HTTPS Everywhere for
+        Firefox</a> by Mike
+        Perry and Peter
+        Eckersley.</p>
 
-<p>Ruleset librarians: Seth Schoen, Mike Cardwell and Andreas Jonsson.</p>
+    <p><span id="rulesetsL"></span>: Seth Schoen, Mike Cardwell and Andreas Jonsson.</p>
 </div>
 </body>
 </html>
