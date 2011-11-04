@@ -1,8 +1,8 @@
 {
-    "extDescription": {"message": "HTTPS Everywhere encrypts your communications with a number of major websites."},
+    "extDescription": {"message": "HTTPS Enforcer encrypts your communications with a number of major websites."},
 
-    "optionsTitle": {"message": "HTTPS Everywhere Options"},
-    "optionsHeader": {"message": "HTTPS Everywhere Options"},
+    "optionsTitle": {"message": "HTTPS Enforcer Options"},
+    "optionsHeader": {"message": "HTTPS Enforcer Options"},
     "enableXhr": {"message": "Automatically detect new https sites and redirect to it"},
     "sendNewSite": {"message": "Send new https sites to plugin`s author"},
     "secureCookies": {"message": "Secure cookies on https sites"},
@@ -15,16 +15,15 @@
     "enabled": {"message": "Enabled"},
     "disabled": {"message": "Disabled"},
 
-    "aboutTitle": {"message": "About HTTPS Everywhere for Chrome"},
-    "aboutHeader": {"message": "About HTTPS Everywhere"},
+    "aboutTitle": {"message": "About HTTPS Enforcer for Chrome"},
+    "aboutHeader": {"message": "About HTTPS Enforcer"},
     "version": {"message": "Version"},
-    "dbVersion": {"message": "Database version"},
     "author": {"message": "Created by"},
     "idea": {"message": "Idea"},
     "rulesets": {"message": "Ruleset librarians"},
 
-    "rulesTitle": {"message": "HTTPS Everywhere Rules"},
-    "rulesHeader": {"message": "HTTPS Everywhere Rules"},
+    "rulesTitle": {"message": "HTTPS Enforcer Rules"},
+    "rulesHeader": {"message": "HTTPS Enforcer Rules"},
     "rulesName": {"message": "Name"},
     "rulesStatus": {"message": "Status"},
 

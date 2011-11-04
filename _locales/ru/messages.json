@@ -1,8 +1,8 @@
 {
-    "extDescription": {"message": "HTTPS Everywhere переключает соединение на зашифрованный канал, когда вы посещаете сайты, которые поддерживают шифрование."},
+    "extDescription": {"message": "HTTPS Enforcer переключает соединение на зашифрованный канал, когда вы посещаете сайты, которые поддерживают шифрование."},
 
-    "optionsTitle": {"message": "Настройки HTTPS Everywhere"},
-    "optionsHeader": {"message": "Настройки HTTPS Everywhere"},
+    "optionsTitle": {"message": "Настройки HTTPS Enforcer"},
+    "optionsHeader": {"message": "Настройки HTTPS Enforcer"},
     "enableXhr": {"message": "Если сайт не найден в базе, проверить, поддерживает ли он шифрование, и, если поддерживает, то перенаправлять на зашифрованную версию."},
     "sendNewSite": {"message": "Отправлять новые найденные сайты автору расширения"},
     "secureCookies": {"message": "Передавать cookies только по зашифрованному каналу"},
@@ -15,16 +15,15 @@
     "enabled": {"message": "Включено"},
     "disabled": {"message": "Выключено"},
 
-    "aboutTitle": {"message": "HTTPS Everywhere"},
-    "aboutHeader": {"message": "HTTPS Everywhere"},
+    "aboutTitle": {"message": "HTTPS Enforcer"},
+    "aboutHeader": {"message": "HTTPS Enforcer"},
     "version": {"message": "Версия"},
-    "dbVersion": {"message": "Версия базы"},
     "author": {"message": "Автор"},
     "idea": {"message": "Идея"},
     "rulesets": {"message": "Правила"},
 
-    "rulesTitle": {"message": "Правила HTTPS Everywhere"},
-    "rulesHeader": {"message": "Правила HTTPS Everywhere"},
+    "rulesTitle": {"message": "Правила HTTPS Enforcer"},
+    "rulesHeader": {"message": "Правила HTTPS Enforcer"},
     "rulesName": {"message": "Название"},
     "rulesStatus": {"message": "Статус"},
 

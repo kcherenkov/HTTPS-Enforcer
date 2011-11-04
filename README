@@ -1,4 +1,4 @@
-The HTTPS Everywhere extension makes it easy to ensure you’re connecting to secure sites by rewriting all requests to an HTTPS URL whenever you visit one of the sites HTTPS Everywhere supports.
+The HTTPS Enforcer extension makes it easy to ensure you’re connecting to secure sites by rewriting all requests to an HTTPS URL whenever you visit one of the sites HTTPS Enforcer supports.
 
 Original idea and ruleset libraries: https://www.eff.org/https-everywhere
 

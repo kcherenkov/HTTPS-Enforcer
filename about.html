@@ -12,11 +12,9 @@
                 document.getElementById('desc').innerText = chrome.i18n.getMessage("extDescription");
                 document.getElementById('version').innerText = manifest.version;
             });
-            document.getElementById('dbVersion').innerText = new Date(localStorage['dbVersion']).toLocaleDateString();
             $('aboutTitle').innerText = chrome.i18n.getMessage("aboutTitle");
             $('aboutHeader').innerText = chrome.i18n.getMessage("aboutHeader");
             $('versionL').innerText = chrome.i18n.getMessage("version");
-            $('dbVersionL').innerText = chrome.i18n.getMessage("dbVersion");
             $('authorL').innerText = chrome.i18n.getMessage("author");
             $('ideaL').innerText = chrome.i18n.getMessage("idea");
             $('rulesetsL').innerText = chrome.i18n.getMessage("rulesets");
@@ -34,8 +32,6 @@
     <p id="desc"></p>
 
     <p><span id="versionL"></span>: <span id="version"></span></p>
-
-    <p><span id="dbVersionL"></span>: <span id="dbVersion"></span></p>
 
     <p><span id="authorL"></span>: <a href="http://kcherenkov.net" target="_blank">Konstantin Cherenkov</a>.</p>
 

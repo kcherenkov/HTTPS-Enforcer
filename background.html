@@ -13,43 +13,29 @@ chrome.extension.getManifest = (function(callback) {
 
 var version = localStorage['version'];
 
-var db = openDatabase('https_everywhere', "1.0", 'HTTPS Everywhere data', 5 * 1024 * 1024, function(database) {
+var db = openDatabase('https_everywhere', "1.0", 'HTTPS Enforcer data', 5 * 1024 * 1024, function(database) {
     createAndPopulateDatabase();
-    localStorage['dbVersion'] = 'Thu, 20 Oct 2011 09:26:52 GMT';
 });
 
 chrome.extension.getManifest(function(manifest) {
     localStorage['version'] = manifest.version;
-});
-
-if ('undefined' === typeof version) // first start
-{
-    localStorage['protectsCount'] = 0;
-    localStorage['enableXhr'] = false;
-    localStorage['sendNewSite'] = false;
-    localStorage['secureCookies'] = true;
-    localStorage['checkBeforeRedirect'] = false;
-}
-else if ('undefined' === typeof localStorage['lastDbCheck'] ||
-        (new Date() - new Date(localStorage['lastDbCheck'])) / (1000 * 60 * 60) > 6) {
-    checkDatabaseVersion(function(version) {
-        var currentVersion;
-        if ('undefined' === typeof localStorage['dbVersion'])
-            currentVersion = new Date(0);
-        else
-            currentVersion = new Date(localStorage['dbVersion']);
-        var serverVersion = new Date(version);
-        localStorage['lastDbCheck'] = new Date().toUTCString();
-        if (serverVersion > currentVersion) {
+    if (version != manifest.version)
+    {
+        if ('undefined' === typeof version) // first start
+        {
+            localStorage['protectsCount'] = 0;
+            localStorage['enableXhr'] = false;
+            localStorage['sendNewSite'] = false;
+            localStorage['secureCookies'] = true;
+            localStorage['checkBeforeRedirect'] = false;
+        }
+        else    // update
+        {
             updateDatabase(function(success) {
-                if (success)
-                {
-                    localStorage['dbVersion'] = version;
-                }
             });
         }
-    });
-}
+    }
+});
 
 var tabs = [];
 var a = document.createElement('a');    //global a element for retrieve parts of url, i.e. host, protocol, etc
@@ -254,17 +240,6 @@ function reportSite(host, action) {
     xhr.send(host);
 }
 
-function checkDatabaseVersion(callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://securegoogle.net/https-everywhere.njs?action=check_db_version', true);
-    xhr.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            callback(this.responseText);
-        }
-    };
-    xhr.send();
-}
-
 function updateDatabase(callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'drop.sql', true);
@@ -278,7 +253,7 @@ function updateDatabase(callback) {
                         callback(false);
                     },
                     function() {
-                        populateDatabase('http://securegoogle.net/db.xml');
+                        populateDatabase();
                         callback(true);
                     });
         }
@@ -337,25 +312,16 @@ function createAndPopulateDatabase() {
                 for (var key in queries)
                     tx.executeSql(queries[key]);
             }, null, function() {
-                populateDatabase('db.xml', function() {
-                    //  When you are entering data into a new table which has indexes on it,
-                    //  this can be much slower than entering all the data first, and then creating the index.
-                    db.transaction(function(tx) {
-                        var tableNames = ['hosts', 'rules', 'cookies', 'exclusions'];
-                        for (var key in tableNames)
-                            tx.executeSql('CREATE INDEX "' + tableNames[key] + '_ruleset_id_index" ON "' + tableNames[key] + '" ("ruleset_id")');
-                        tx.executeSql('CREATE INDEX "hosts_host_index" ON "hosts" ("host")');
-                    });
-                });
+                populateDatabase();
             });
         }
     };
     xhr.send();
 }
 
-function populateDatabase(source, successCallback) {
+function populateDatabase(successCallback) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', source, true);
+    xhr.open('GET', 'db.xml', true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             var xml = xhr.responseXML;
@@ -405,7 +371,17 @@ function populateDatabase(source, successCallback) {
                     tx.executeSql('UPDATE "hosts" SET "host" = REPLACE ("host", "*", "%")');    //for LIKE statements
                 }, null, function() {
                     if ('undefined' !== typeof successCallback)
+                    {
+                        //  When you are entering data into a new table which has indexes on it,
+                        //  this can be much slower than entering all the data first, and then creating the index.
+                        db.transaction(function(tx) {
+                            var tableNames = ['hosts', 'rules', 'cookies', 'exclusions'];
+                            for (var key in tableNames)
+                                tx.executeSql('CREATE INDEX "' + tableNames[key] + '_ruleset_id_index" ON "' + tableNames[key] + '" ("ruleset_id")');
+                            tx.executeSql('CREATE INDEX "hosts_host_index" ON "hosts" ("host")');
+                        });
                         successCallback();
+                    }
                 }, function(error){
                     console.log(error);
                 });
