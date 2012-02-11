@@ -1,154 +1,67 @@
 <!doctype html>
 <html>
 <head>
-    <link rel="stylesheet" href="css/demo_table.css"/>
-    <style type="text/css">
-        body {
-            font-family: Arial, Verdana, sans-serif;
-            font-size: 14px;
-        }
-
-        .menu {
-            color: #3d5d6a;
-            text-indent: .5em;
-            white-space: nowrap;
-            text-decoration: none;
-            display: block;
-        }
-
-        .text {
-            float: left;
-        }
-
-        .shortcut {
-            color: #A1A192;
-            float: right;
-            margin-right: 8px;
-        }
-
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        li {
-            list-style: none;
-            cursor: pointer;
-            overflow: hidden;
-            border: 1px solid white;
-            line-height: 26px;
-        }
-
-        li:hover {
-            border-radius: 3px 3px;
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(0.4, hsl(215, 67%, 97%)), color-stop(0.41, hsl(213, 48%, 95%)));
-            border: solid 1px #c5cdd3;
-        }
-
-        li.protectsCount {
-            cursor: default;
-        }
-
-        li.protectsCount:hover {
-            border-radius: 0;
-            background: none;
-            border: solid 1px white;
-        }
-
-        li.ruleset {
-            cursor: default;
-        }
-
-        li.ruleset span.shortcut {
-            cursor: pointer;
-        }
-
-        .separator {
-            border-top: 1px solid #ddd;
-            margin: 5px 0;
-        }
-    </style>
     <script>
         var $ = function(id) {
             return document.getElementById(id);
         };
-
-        var bg = chrome.extension.getBackgroundPage();
-        var storage = bg.localStorage;
-        var db = bg.db;
-        const checkmark = '\u2714';
-        const ballotx = '\u2718';
-        var enabledL = chrome.i18n.getMessage("enabled");
-        var disabledL = chrome.i18n.getMessage("disabled");
+        
+        const green = [150, 230, 120, 250];
+        const red = [230, 150, 120, 250];
+        
+        var config = {
+              mode: "pac_script",
+              pacScript: {
+                url: "http://dl.dropbox.com/u/31387995/rules.pac"
+              }
+            };
+        
+        function setBadge( color) {
+            chrome.browserAction.setBadgeBackgroundColor({color: color});
+            chrome.browserAction.setBadgeText({text: ' '});
+        };
+        
+        function changeStatus() {
+          chrome.proxy.settings.get({}, function(details) {
+            if (details.value.mode === 'pac_script')
+            {
+              chrome.proxy.settings.clear({}, function() {
+                setBadge(red);
+                $('status').innerText = chrome.i18n.getMessage('disabled');
+              });
+            }
+            else if (details.value.mode === 'system')
+            {
+              chrome.proxy.settings.set({value: config}, function() {
+                setBadge(green);
+                $('status').innerText = chrome.i18n.getMessage('enabled');
+              });
+            }
+          });
+        };
+        
+        chrome.proxy.settings.get({}, function(details) {
+            if (details.value.mode === 'pac_script')
+            {
+              $('status').innerText = chrome.i18n.getMessage('enabled');
+              setBadge(green);
+            }
+            else if (details.value.mode === 'system')
+            {
+              $('status').innerText = chrome.i18n.getMessage('disabled');
+              setBadge(red);
+            }
+          });
+        
         window.onload = function() {
-            $('protectsCount').innerText = storage['protectsCount'];
-            var list = $('list');
-            var sep = $('sep');
-            list.addEventListener('click', function(e) {
-                if (e.target.className !== 'shortcut' || !e.target.parentNode.classList.contains('ruleset'))
-                    return;
-                var id = e.target.parentNode.id;
-                var enabled = e.target.innerText === checkmark;
-                {
-                    db.transaction(function(tx){
-                        tx.executeSql('UPDATE "rulesets" SET "enabled" = ? WHERE "id" = ?', [!enabled, id]);
-                    }, null, function(tx){
-                        e.target.innerText = enabled ? ballotx : checkmark;
-                        e.target.title = enabled ? disabledL : enabledL;
-                    });
-                }
-            });
-            chrome.tabs.getSelected(null, function(tab) {
-                if ('undefined' === typeof bg.tabs[tab.id].possible_ruleset_ids)
-                    return;
-                var ruleset_ids = bg.tabs[tab.id].possible_ruleset_ids;
-                var q = '?';
-                for (var i = 1, l = ruleset_ids.length; i < l; ++i)
-                    q += ', ?';
-
-                var newSep = sep.cloneNode();
-                newSep.id = null;
-                list.insertBefore(newSep, sep);
-                db.readTransaction(function(tx) {
-                    tx.executeSql('SELECT "id", "name", "enabled" FROM "rulesets" WHERE "id" IN (' + q + ')', ruleset_ids, function(tx, resultSet) {
-                        for (var i = 0, l = resultSet.rows.length; i < l; ++i) {
-                            var ruleset = document.createElement('li');
-                            ruleset.className = 'menu';
-                            ruleset.classList.add('ruleset');
-                            var enabled = resultSet.rows.item(i)["enabled"] === 'true';
-                            ruleset.id = resultSet.rows.item(i)["id"];
-                            ruleset.innerHTML = '<span class="text">' + resultSet.rows.item(i)["name"] + '</span>'
-                                    + '<span class="shortcut" title="'+ (enabled ? enabledL : disabledL) +'">' + (enabled ? checkmark : ballotx) + '</span>';
-                            list.insertBefore(ruleset, sep);
-                        }
-                    });
-                });
-            });
-            $('protectsCountS').innerText = chrome.i18n.getMessage("protectsCount");
-            $('options').innerText = chrome.i18n.getMessage("options");
-            $('rules').innerText = chrome.i18n.getMessage("rules");
-            $('about').innerText = chrome.i18n.getMessage("about");
+          $('statusLabel').innerText = chrome.i18n.getMessage('statusLabel');
+          $('statusLabel').onclick = function(){
+            changeStatus();
+          };  
         }
     </script>
 </head>
 <body>
-<ul id="list">
-    <li class="menu protectsCount">
-        <span id="protectsCountS" class="text"></span>
-        <span class="shortcut" id="protectsCount"></span>
-    </li>
-    <div id="sep" class="separator"></div>
-    <li>
-        <a href="options.html" target="_blank" id="options" class="menu"></a>
-    </li>
-    <li>
-        <a href="rules.html" target="_blank" id="rules" class="menu"></a>
-    </li>
-    <div class="separator"></div>
-    <li>
-        <a href="about.html" target="_blank" id="about" class="menu"></a>
-    </li>
-</ul>
+<p><a href="#" id="statusLabel">Status</a>: <span id="status"></span></p>
 </body>
 </html>
