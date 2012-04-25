@@ -1252,6 +1252,7 @@ R.rules.push(new Rule("^http://(?:www\\.)?amazonwebservices\\.com/", "https://aw
 R.rules.push(new Rule("^http://developer\\.amazonwebservices\\.com/", "https://developer.amazonwebservices.com/"));
 R.rules.push(new Rule("^http://media\\.amazonwebservices\\.com/", "https://s3.amazonaws.com/awsmedia/"));
 R.rules.push(new Rule("^http://(?:(?:\\w-)?ecx\\.images-|images\\.)amazon\\.com/", "https://images-na.ssl-images-amazon.com/"));
+R.exclusions.push(new Exclusion("^http://static\\.via\\.me\\.s3\\.amazonaws\\.com/"));
 T["aws.amazon.com"] = [];
 T["aws.amazon.com"].push(R);
 T["signin.aws.amazon.com"] = [];
@@ -11354,6 +11355,7 @@ T["secure.lenos.com"].push(R);
 
 R = new RuleSet("Lenovo (partial)");
 R.rules.push(new Rule("^http://lenovo\\.com/", "https://www.lenovo.com/"));
+R.rules.push(new Rule("^https?://www\\.lenovo\\.com/epp$", "https://www.lenovo.com/epp/"));
 R.rules.push(new Rule("^http://(outlet|shop|www)\\.lenovo\\.com/", "https://$1.lenovo.com/"));
 R.rules.push(new Rule("^http://(?:www\\.)?lenovo\\.co\\.uk/?$", "https://www.lenovo.com/uk/en/"));
 R.rules.push(new Rule("^http://(www\\.)?lenovoorders\\.com/", "https://$1lenovoorders.com/"));
@@ -23613,9 +23615,12 @@ R.rules.push(new Rule("^http://(?:www\\.)?yandex\\.(net|st)/", "https://yandex.$
 R.rules.push(new Rule("^http://([^.]+)\\.([^.]+)\\.yandex\\.(ru|net)/", "https://$1.$2.yandex.$3/"));
 R.rules.push(new Rule("^http://(?:www\\.)?([^.]+)\\.ya\\.ru/", "https://$1.ya.ru/"));
 R.rules.push(new Rule("^http://(?:www\\.)?moikrug\\.ru/", "https://moikrug.ru/"));
+R.rules.push(new Rule("^https://static-maps\\.yandex\\.ru/", "http://static-maps.yandex.ru/"));
+R.rules.push(new Rule("^https://(cs-ellpic|mdata)\\.yandex\\.net/", "http://$1.yandex.net/"));
 R.exclusions.push(new Exclusion("^http://api-maps\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://bar-widgets\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://blogs\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://cs-ellpic\\.yandex\\.net/"));
 R.exclusions.push(new Exclusion("^http://cs-thumb\\.yandex\\.net/"));
 R.exclusions.push(new Exclusion("^http://dict\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://cards\\.yandex\\.ru/"));
@@ -23626,6 +23631,7 @@ R.exclusions.push(new Exclusion("^http://fotki\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://images\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://lingvo\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://maps\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://static-maps\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://metro\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://music\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://news\\.yandex\\.ru/"));
