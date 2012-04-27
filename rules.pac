@@ -8177,6 +8177,7 @@ T["google-melange.com"].push(R);
 R = new RuleSet("Google Search");
 R.rules.push(new Rule("^http://encrypted\\.google\\.com/", "https://encrypted.google.com/"));
 R.rules.push(new Rule("^http://(?:www\\.)?google\\.com/search", "https://encrypted.google.com/search"));
+R.rules.push(new Rule("^http://(?:www\\.)?google\\.com/about", "https://www.google.com/about"));
 R.rules.push(new Rule("^http://(?:www\\.)?google(?:\\.com?)?\\.[a-z][a-z]/firefox/?$", "https://encrypted.google.com/"));
 R.rules.push(new Rule("^http://(?:www\\.)?google(?:\\.com?)?\\.[a-z][a-z]/firefox", "https://encrypted.google.com/webhp"));
 R.rules.push(new Rule("^http://(?:www\\.)?google\\.com/webhp", "https://encrypted.google.com/webhp"));
@@ -8197,7 +8198,6 @@ R.exclusions.push(new Exclusion("^http://(?:www\\.)?google\\.com/search.*tbs=sho
 R.exclusions.push(new Exclusion("^http://clients[0-9]\\.google\\.com/.*client=products.*"));
 R.exclusions.push(new Exclusion("^http://suggestqueries\\.google\\.com/.*client=.*"));
 R.exclusions.push(new Exclusion("^http://(?:www\\.)?google\\.com/search.*tbm=isch.*"));
-R.exclusions.push(new Exclusion("^http://(?:www\\.)?google\\.com/about"));
 T["*.google.com"].push(R);
 T["google.com"].push(R);
 T["www.google.com.*"].push(R);
