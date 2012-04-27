@@ -16956,13 +16956,6 @@ T["docreader.readspeaker.com"].push(R);
 T["asp.readspeaker.net"] = [];
 T["asp.readspeaker.net"].push(R);
 
-R = new RuleSet("ReadWriteWeb");
-R.rules.push(new Rule("^http://(?:www\\.)?readwriteweb\\.com/", "https://www.readwriteweb.com/"));
-T["readwriteweb.com"] = [];
-T["readwriteweb.com"].push(R);
-T["www.readwriteweb.com"] = [];
-T["www.readwriteweb.com"].push(R);
-
 R = new RuleSet("Reco.se");
 R.rules.push(new Rule("^http://www\\.reco\\.se/", "https://www.reco.se/"));
 R.rules.push(new Rule("^http://reco\\.se/", "https://www.reco.se/"));
