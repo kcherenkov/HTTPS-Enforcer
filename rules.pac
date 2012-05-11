@@ -3402,7 +3402,7 @@ R.rules.push(new Rule("^http://secure\\.vanityfair\\.com/", "https://secure.vani
 R.rules.push(new Rule("^https?://stats2\\.vanityfair\\.com/", "https://conde-vanityfair.122.2o7.net/"));
 R.rules.push(new Rule("^https?://(?:www\\.)?wired\\.com/usr/log(in|out)", "https://secure.wired.com/usr/log$1"));
 R.rules.push(new Rule("^http://subscri(be|ptions)\\.wired\\.com/", "https://subscri$1.wired.com/"));
-R.exclusions.push(new Exclusion("^https?://cdn\\.arstechnica\\.net/wp-(content|uploads)/"));
+R.exclusions.push(new Exclusion("^https?://cdn\\.arstechnica\\.com/wp-(content|uploads)/"));
 R.exclusions.push(new Exclusion("^http://(?:www\\.)?wired\\.com/favicon\\.ico$"));
 a("arstechnica.com");
 a("*.arstechnica.com");
@@ -14022,13 +14022,6 @@ R.rules.push(new Rule("^http://(?:www\\.)?schooltoprison\\.org/", "https://www.s
 a("schooltoprison.org");
 a("www.schooltoprison.org");
 
-R = new RuleSet("ScienceDaily.com");
-R.rules.push(new Rule("^http://(www\\.)?sciencedaily\\.com/", "https://www.sciencedaily.com/"));
-R.rules.push(new Rule("^http://images\\.sciencedaily\\.com/", "https://www.sciencedaily.com/images/"));
-a("sciencedaily.com");
-a("images.sciencedaily.com");
-a("www.sciencedaily.com");
-
 R = new RuleSet("Sciencemag.org");
 R.rules.push(new Rule("^http://(?:www\\.)?sciencemag\\.org/", "https://www.sciencemag.org/"));
 a("sciencemag.org");
@@ -18440,6 +18433,11 @@ R = new RuleSet("Xagasoft");
 R.rules.push(new Rule("^http://(www\\.)?xagasoft\\.com/", "https://$1xagasoft.com/"));
 a("xagasoft.com");
 a("www.xagasoft.com");
+
+R = new RuleSet("Xavisys");
+R.rules.push(new Rule("^http://(www\\.)?xavisys\\.com/", "https://$1xavisys.com/"));
+a("xavisys.com");
+a("www.xavisys.com");
 
 R = new RuleSet("Xfire (partial)");
 R.rules.push(new Rule("^http://(www\\.)?xfire\\.com/lo(gin|st_password)", "https://$1xfire.com/lo$2"));
