@@ -217,9 +217,7 @@ a("cloud.24way.org");
 a("media.24way.org");
 
 R = new RuleSet("2o7.net");
-R.rules.push(new Rule("^http://2o7\\.net/", "https://2o7.net/"));
 R.rules.push(new Rule("^http://([^/:@\\.]+)(\\.1[12]2)?\\.2o7\\.net/", "https://$1$2.2o7.net/"));
-a("2o7.net");
 a("*.2o7.net");
 a("*.112.2o7.net");
 a("*.122.2o7.net");
@@ -327,12 +325,6 @@ a("shop.abc.net.au");
 a("abccommercial.com");
 a("*.abccommercial.com");
 
-R = new RuleSet("ABIS-Studien.se");
-R.rules.push(new Rule("^http://www\\.abis-studien\\.se/", "https://www.abis-studien.se/"));
-R.rules.push(new Rule("^http://abis-studien\\.se/", "https://abis-studien.se/"));
-a("abis-studien.se");
-a("www.abis-studien.se");
-
 R = new RuleSet("ABN AMRO Bank");
 R.rules.push(new Rule("^http://(?:www\\.)?abnamro\\.nl/", "https://www.abnamro.nl/"));
 a("www.abnamro.nl");
@@ -385,10 +377,10 @@ a("www.vorratsdatenspeicherung.de");
 a("wiki.vorratsdatenspeicherung.de");
 
 R = new RuleSet("Aldi - Germany");
-R.rules.push(new Rule("^https?://(?:www\\.)?\\aldisued\\.de/", "https://www.aldi-sued.de/"));
-R.rules.push(new Rule("^http://(?:www\\.)?\\aldi-sued\\.de/", "https://www.aldi-sued.de/"));
-R.rules.push(new Rule("^http://(?:www\\.)?\\aldi-nord\\.de/", "https://www.aldi-nord.de/"));
-R.rules.push(new Rule("^https?://(?:www\\.)?\\aldinord\\.de/", "https://www.aldi-nord.de/"));
+R.rules.push(new Rule("^https?://(?:www\\.)?aldisued\\.de/", "https://www.aldi-sued.de/"));
+R.rules.push(new Rule("^http://(?:www\\.)?aldi-sued\\.de/", "https://www.aldi-sued.de/"));
+R.rules.push(new Rule("^http://(?:www\\.)?aldi-nord\\.de/", "https://www.aldi-nord.de/"));
+R.rules.push(new Rule("^https?://(?:www\\.)?aldinord\\.de/", "https://www.aldi-nord.de/"));
 a("www.aldisued.de");
 a("www.aldi-sued.de");
 a("aldisued.de");
@@ -2725,8 +2717,6 @@ R.rules.push(new Rule("^http://business-query\\.caltech\\.edu:8181/", "https://b
 R.rules.push(new Rule("^http://nassau\\.caltech\\.edu:4444/", "https://nassau.caltech.edu:4444/"));
 R.rules.push(new Rule("^http://pcard\\.caltech\\.edu/", "https://pcard.caltech.edu/"));
 R.rules.push(new Rule("^http://scriptor\\.caltech\\.edu/", "https://scriptor.caltech.edu/"));
-R.rules.push(new Rule("^http://courses\\.hss\\.caltech\\.edu/", "https://courses.hss.caltech.edu/"));
-R.rules.push(new Rule("^http://dabney\\.caltech\\.edu/", "https://dabney.caltech.edu/"));
 R.rules.push(new Rule("^http://(?:www\\.)?its\\.caltech\\.edu/", "https://www.its.caltech.edu/"));
 R.rules.push(new Rule("^http://web\\.caltech\\.edu/", "https://web.caltech.edu/"));
 a("tqfr.caltech.edu");
@@ -2903,7 +2893,7 @@ a("cartercenter.org");
 a("www.cartercenter.org");
 
 R = new RuleSet("Casale Media (partial)");
-R.rules.push(new Rule("^http://system\\·casalemedia\\.com/", "https://system.casalemedia.com/"));
+R.rules.push(new Rule("^http://system\\.casalemedia\\.com/", "https://system.casalemedia.com/"));
 a("*.casalemedia.com");
 
 R = new RuleSet("Casascius");
@@ -8083,11 +8073,6 @@ R = new RuleSet("Ithaca College");
 R.rules.push(new Rule("^http://(www\\.)?ithaca\\.edu/", "https://ithaca.edu/"));
 a("www.ithaca.edu");
 a("ithaca.edu");
-
-R = new RuleSet("Itpol.dk");
-R.rules.push(new Rule("^http://(www\\.)?itpol\\.dk/", "https://www.itpol.dk/"));
-a("itpol.dk");
-a("www.itpol.dk");
 
 R = new RuleSet("ItsLearning");
 R.rules.push(new Rule("^http://(?:www\\.)?itslearning\\.com/", "https://www.itslearning.com/"));
@@ -18295,7 +18280,7 @@ a("onlinelibrarystatic.wiley.com");
 
 R = new RuleSet("William Hill (partial)");
 R.rules.push(new Rule("^https?://(?:www\\.)?affutd\\.com/", "https://www.affutd.com/"));
-R.rules.push(new Rule("^https?://(?:www\\.)?williamhill.\\com/", "https://www.williamhill.com/"));
+R.rules.push(new Rule("^https?://(?:www\\.)?williamhill\\.com/", "https://www.williamhill.com/"));
 R.rules.push(new Rule("^https?://(?:cache)?serve\\.williamhill\\.com/", "https://serve.williamhill.com/"));
 R.rules.push(new Rule("^https?://(?:sec|wh)dn\\.williamhill\\.com/", "https://secdn.williamhill.com/"));
 R.rules.push(new Rule("^http://sports\\.williamhill\\.com/acc/", "https://sports.williamhill.com/acc/"));
