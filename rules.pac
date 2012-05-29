@@ -4548,16 +4548,6 @@ R.rules.push(new Rule("^http://www\\.diskusjon\\.no/", "https://www.diskusjon.no
 a("diskusjon.no");
 a("www.diskusjon.no");
 
-R = new RuleSet("Disqus");
-R.rules.push(new Rule("^http://(www\\.)?disqus\\.com/", "https://$1disqus.com/"));
-R.rules.push(new Rule("^http://(?:media|secure)(?:cdn)?\\.disqus\\.com/", "https://securecdn.disqus.com/"));
-R.rules.push(new Rule("^http://(\\w+)\\.disqus\\.com/", "https://$1.disqus.com/"));
-R.exclusions.push(new Exclusion("^http://blog\\."));
-R.exclusions.push(new Exclusion("^http://disqus\\.com/next/lounge/client\\.html"));
-R.exclusions.push(new Exclusion("^http://\\w+\\.disqus\\.com/\\d+/build/system/embed\\.js"));
-a("disqus.com");
-a("*.disqus.com");
-
 R = new RuleSet("Ditt Distrikt");
 R.rules.push(new Rule("^http://(?:www\\.)?dittdistrikt\\.no/", "https://www.dittdistrikt.no/"));
 a("dittdistrikt.no");
@@ -10251,11 +10241,6 @@ a("mageia.org");
 a("*.mageia.org");
 a("*.forums.mageia.org");
 
-R = new RuleSet("Magento");
-R.rules.push(new Rule("^http://(?:www\\.)?magentocommerce\\.com/", "https://www.magentocommerce.com/"));
-a("magentocommerce.com");
-a("www.magentocommerce.com");
-
 R = new RuleSet("Magnatune (partial)");
 R.rules.push(new Rule("^https?://(?:he3\\.|(www\\.))?magnatune\\.com/", "https://$1magnatune.com/"));
 a("magnatune.com");
@@ -10265,18 +10250,6 @@ R = new RuleSet("Magnet.ie");
 R.rules.push(new Rule("^http://(?:www\\.)?magnet\\.ie/", "https://www.magnet.ie/"));
 a("magnet.ie");
 a("www.magnet.ie");
-
-R = new RuleSet("Magneto (partial)");
-R.rules.push(new Rule("^http://(www\\.)?imagineecommerce\\.com/wp-content/themes/imagine/favicon\\.ico$", "https://registration.imagineecommerce.com/_assets/img/icons/favicon.ico"));
-R.rules.push(new Rule("^http://registration\\.imagineecommerce\\.com/", "https://registration.imagineecommerce.com/"));
-R.rules.push(new Rule("^http://go\\.magneto\\.com/(.+[^/]$)", "https://go.magneto.com/$1"));
-R.rules.push(new Rule("^http://(www\\.)?magnetocommerce\\.com/", "https://www.magnetocommerce.com/"));
-a("imagineecommerce.com");
-a("registration.imagineecommerce.com");
-a("www.imagineecommerce.com");
-a("go.magneto.com");
-a("magnetocommerce.com");
-a("www.magnetocommerce.com");
 
 R = new RuleSet("Mail.com");
 R.rules.push(new Rule("^http://(?:www\\.)?mail\\.com/", "https://www.mail.com/"));
