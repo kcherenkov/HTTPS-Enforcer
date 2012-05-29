@@ -644,6 +644,11 @@ R.rules.push(new Rule("^http://(www\\.)?adf\\.ly/", "https://$1adf.ly/"));
 a("adf.ly");
 a("www.adf.ly");
 
+R = new RuleSet("AdPerfect (partial)");
+R.rules.push(new Rule("^https?://(?:www\\.)?adperfect\\.com/", "https://www.adperfect.com/"));
+a("adperfect.com");
+a("www.adperfect.com");
+
 R = new RuleSet("AdaCore");
 R.rules.push(new Rule("^http://(\\w+\\.)?adacore\\.com/", "https://$1adacore.com/"));
 a("adacore.com");
@@ -1632,10 +1637,9 @@ a("www.bamshop.co.uk");
 
 R = new RuleSet("BBC (partial)");
 R.rules.push(new Rule("^http://(sa|static)\\.bbci?\\.co\\.uk/", "https://$1.bbc.co.uk/"));
-R.rules.push(new Rule("^http://(?:www\\.)?bbc\\.co\\.uk/(favicon\\.ico$|glow/|guidance/|iplayer/)", "https://www.bbc.co.uk/$1"));
-R.rules.push(new Rule("^http://node[12]\\.bbcimg\\.co\\.uk/iplayer/", "https://www.bbc.co.uk/iplayer/"));
+R.rules.push(new Rule("^https?://(?:www\\.)?bbc\\.co\\.uk/(favicon\\.ico$|glow/|guidance/|iplayer/)", "https://www.bbc.co.uk/$1"));
+R.rules.push(new Rule("^https?://node[12]\\.bbcimg\\.co\\.uk/iplayer/", "https://www.bbc.co.uk/iplayer/"));
 a("bbc.co.uk");
-a("sa.bbc.co.uk");
 a("*.bbc.co.uk");
 a("static.bbci.co.uk");
 a("node1.bbcimg.co.uk");
@@ -5782,7 +5786,7 @@ a("*.members.fas.org");
 R = new RuleSet("Fedora Project");
 R.rules.push(new Rule("^http://(www\\.)?fedorahosted\\.org/", "https://fedorahosted.org/"));
 R.rules.push(new Rule("^http://fedoraproject\\.org/", "https://fedoraproject.org/"));
-R.rules.push(new Rule("^http://(admin|alt|archives|blogs|boot|docs|lists|mirrors|spins|start|talk|www)\\.fedoraproject\\.org/", "https://$1.fedoraproject.org/"));
+R.rules.push(new Rule("^http://(admin|alt|archives|blogs|boot|dl|docs|lists|mirrors|spins|start|talk|www)\\.fedoraproject\\.org/", "https://$1.fedoraproject.org/"));
 a("fedorahosted.org");
 a("www.fedorahosted.org");
 a("fedoraproject.org");
@@ -5853,7 +5857,7 @@ a("53.com");
 a("*.53.com");
 
 R = new RuleSet("Fight for the Future (partial)");
-R.rules.push(new Rule("^http://s3\\.fightforthefuture\\.org/", "https://s3.amazonaws.com/s3.fightforthefuture.org/"));
+R.rules.push(new Rule("^https?://s3\\.fightforthefuture\\.org/", "https://s3.amazonaws.com/s3.fightforthefuture.org/"));
 a("s3.fightforthefuture.org");
 
 R = new RuleSet("FileBox");
@@ -10566,6 +10570,7 @@ a("www.mediamath.com");
 
 R = new RuleSet("MediaMatters.org (partial)");
 R.rules.push(new Rule("^http://([csw]\\w+\\.)?mediamatters\\.org/static/", "https://s3.amazonaws.com/s3.mediamatters.org/static/"));
+R.exclusions.push(new Exclusion("^http://mediamatters\\.org/static/stylesheets/"));
 a("mediamatters.org");
 a("cloudfront.mediamatters.org");
 a("s3.mediamatters.org");
@@ -12028,8 +12033,13 @@ a("newrelic.com");
 a("*.newrelic.com");
 
 R = new RuleSet("New York University (partial)");
-R.rules.push(new Rule("^http://cs\\.nyu\\.edu/", "https://cs.nyu.edu/"));
-a("cs.nyu.edu");
+R.rules.push(new Rule("^https?://(?:www\\.)?(bookstores\\.)?nyu\\.edu/", "https://www.$1nyu.edu/"));
+R.rules.push(new Rule("^https?://admissions\\.nyu\\.edu/", "https://www.nyu.edu/admissions/undergraduate-admissions.html"));
+R.rules.push(new Rule("^https?://(?:www\\.)?cims\\.nyu\\.edu/", "https://cims.nyu.edu/"));
+R.rules.push(new Rule("^http://(cs|home|login|steinhardt)\\.nyu\\.edu/", "https://$1.nyu.edu/"));
+a("nyu.edu");
+a("*.nyu.edu");
+a("www.*.nyu.edu");
 
 R = new RuleSet("NewIT");
 R.rules.push(new Rule("^http://(?:www\\.)?newit\\.co\\.uk/", "https://newit.co.uk/"));
@@ -12105,7 +12115,7 @@ a("newspaperdirect.com");
 a("www.newspaperdirect.com");
 
 R = new RuleSet("newsvine.com (partial)");
-R.rules.push(new Rule("^http://(?:i\\.|www\\.)?newsvine\\.com/", "https://www.newsvine.com/"));
+R.rules.push(new Rule("^https?://(?:i\\.|www\\.(?:cdn\\.)?)?newsvine\\.com/", "https://www.newsvine.com/"));
 R.rules.push(new Rule("^http://(?:(?:cdn\\.|www\\.)?(bonosrama|lib)|(log))\\.newsvine\\.com/", "https://$1$2.newsvine.com/"));
 R.rules.push(new Rule("^http://onesearch4-2\\.newsvine\\.com/_vine/", "https://onesearch4-2.newsvine.com/_vine/"));
 R.rules.push(new Rule("^http://(?:www\\.)?polls\\.newsvine\\.com/_(static|vine)/", "https://www.newsvine.com/_$1/"));
@@ -12367,6 +12377,10 @@ R = new RuleSet("OLPC (partial)");
 R.rules.push(new Rule("^http://dev\\.laptop\\.org/", "https://dev.laptop.org/"));
 a("dev.laptop.org");
 
+R = new RuleSet("OMG! Ubuntu! (partial)");
+R.rules.push(new Rule("^https?://cloudfront\\.omgubuntu\\.co\\.uk/", "https://omgubuntu.s3-eu-west-1.amazonaws.com/"));
+a("cloudfront.omgubuntu.co.uk");
+
 R = new RuleSet("ON24 (partial)");
 R.rules.push(new Rule("^http://(?:www\\.)?on24\\.com/", "https://www.on24.com/"));
 R.rules.push(new Rule("^http://(event|w)\\.on24\\.com/", "https://$1.on24.com/"));
@@ -12567,6 +12581,11 @@ R.rules.push(new Rule("^http://dashboard\\.open-mesh\\.com/", "https://dashboard
 a("open-mesh.com");
 a("www.open-mesh.com");
 a("dashboard.open-mesh.com");
+
+R = new RuleSet("Open Source Education Center");
+R.rules.push(new Rule("^http://(www\\.)?osec\\.pl/", "https://$1osec.pl/"));
+a("osec.pl");
+a("*.osec.pl");
 
 R = new RuleSet("OpenAthens (partial)");
 R.rules.push(new Rule("^http://auth\\.athensams\\.net/", "https://auth.athensams.net/"));
@@ -13330,6 +13349,10 @@ R.rules.push(new Rule("^http://piscatus\\.se/", "https://piscatus.se/"));
 a("piscatus.se");
 a("www.piscatus.se");
 
+R = new RuleSet("Pittsburgh Post-Gazette (partial)");
+R.rules.push(new Rule("^http://ssl\\.post-gazette\\.com/", "https://ssl.post-gazette.com/"));
+a("ssl.post-gazette.com");
+
 R = new RuleSet("Pivotal Tracker");
 R.rules.push(new Rule("^http://(?:www\\.)?pivotaltracker\\.com/", "https://www.pivotaltracker.com/"));
 a("pivotaltracker.com");
@@ -14091,6 +14114,7 @@ a("*.r73.cf1.rackcdn.com");
 a("*.ssl.cf1.rackcdn.com");
 a("*.r29.cf2.rackcdn.com");
 a("*.r30.cf2.rackcdn.com");
+a("*.r37.cf2.rackcdn.com");
 a("*.r56.cf2.rackcdn.com");
 a("*.r62.cf2.rackcdn.com");
 a("*.r77.cf2.rackcdn.com");
@@ -18188,7 +18212,7 @@ a("www.uef.fi");
 
 R = new RuleSet("University of Exeter (partial)");
 R.rules.push(new Rule("^https?://([\\w\\-]+\\.)?ex(?:eter)?\\.ac\\.uk/", "https://$1exeter.ac.uk/"));
-R.rules.push(new Rule("^https?://(?:www\\.)?([\\w\\-]+\\.)ex(?:eter)?\\.ac\\.uk/", "https://$1.exeter.ac.uk/"));
+R.rules.push(new Rule("^https?://(?:www\\.)?([\\w\\-]+\\.)ex(?:eter)?\\.ac\\.uk/", "https://$1exeter.ac.uk/"));
 R.exclusions.push(new Exclusion("^http://(www\\.)?(psychology|sshs)\\."));
 a("ex.ac.uk");
 a("*.ex.ac.uk");
