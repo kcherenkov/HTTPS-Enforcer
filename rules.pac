@@ -4411,10 +4411,13 @@ a("www.democracynow.org");
 R = new RuleSet("Demonoid");
 R.rules.push(new Rule("^http://(?:www\\.)?demonoid\\.com/", "https://www.demonoid.com/"));
 R.rules.push(new Rule("^http://(?:www\\.)?demonoid\\.me/", "https://www.demonoid.me/"));
+R.rules.push(new Rule("^http://(?:www\\.)?demonoid\\.ph/", "https://www.demonoid.ph/"));
 a("*.demonoid.com");
 a("demonoid.com");
 a("*.demonoid.me");
 a("demonoid.me");
+a("*.demonoid.ph");
+a("demonoid.ph");
 
 R = new RuleSet("Dephormation.org.uk");
 R.rules.push(new Rule("^http://(?:www\\.)?dephormation\\.org\\.uk/", "https://www.dephormation.org.uk/"));
@@ -15065,15 +15068,6 @@ R = new RuleSet("Sapo.pt");
 R.rules.push(new Rule("^http://login\\.sapo\\.pt/", "https://login.sapo.pt/"));
 a("login.sapo.pt");
 
-R = new RuleSet("Say Media (partial)");
-R.rules.push(new Rule("^http://(www\\.)?saymedia\\.com/", "https://$1saymedia.com/"));
-R.rules.push(new Rule("^http://(?:www\\.)?typepad\\.com/", "https://www.typepad.com/"));
-R.exclusions.push(new Exclusion("http://www\\.typepad\\.com/services/signin/"));
-a("saymedia.com");
-a("www.saymedia.com");
-a("typepad.com");
-a("www.typepad.com");
-
 R = new RuleSet("Sberbank of Russia");
 R.rules.push(new Rule("^http://(www\\.)?sbrf\\.ru/", "https://www.sbrf.ru/"));
 a("sbrf.ru");
@@ -20016,6 +20010,7 @@ R.exclusions.push(new Exclusion("^http://wdgt\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://weather\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://wordstat\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://www\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://openid\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://(www\\.)?[^.]+\\.ya\\.ru/"));
 R.exclusions.push(new Exclusion("^http://mirror.yandex.ru/"));
 R.exclusions.push(new Exclusion("^http://probki\\.yandex\\.ru/"));
