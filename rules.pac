@@ -10879,7 +10879,7 @@ R.rules.push(new Rule("^https?://microsoft\\.com/", "https://www.microsoft.com/"
 R.rules.push(new Rule("^http://(adcenter|advertising|ajax|c|connect|events|social\\.expression|go|ie|msdn|office(?:365|2010)?|onlinehelp|profile|research|signature|snackbox|(?:services\\.)?social|store|social\\.technet|www\\.update|windowsupdate|www)\\.microsoft\\.com/", "https://$1.microsoft.com/"));
 R.rules.push(new Rule("^https?://(?:i\\d?|js)\\.microsoft\\.com/", "https://www.microsoft.com/"));
 R.rules.push(new Rule("^https?://i\\d?\\.((?:code\\.)?msdn|onlinehelp|(?:services\\.)?social|(?:gallery\\.)?technet)\\.(?:microso|s-ms)ft\\.com/", "https://$1.microsoft.com/"));
-R.rules.push(new Rule("^https?://blogs\\.msdn\\.com/", "https://blogs.msdn.com/?Redirected=true"));
+R.rules.push(new Rule("^https?://blogs\\.msdn\\.com/(.*)", "https://blogs.msdn.com/$1?Redirected=true"));
 R.rules.push(new Rule("^https?://search\\.microsoft\\.com/(global/oneMscomSettings|shared)/", "https://www.microsoft.com/$1/"));
 R.rules.push(new Rule("^http://support\\.microsoft\\.com/((?:common|library|[sS]tyles)/|LTS/default\\.aspx)", "https://support.microsoft.com/$1"));
 R.rules.push(new Rule("^https?://(?:origin-)?res[12]?\\.windows\\.microsoft\\.com/", "https://origin-res.windows.microsoft.com/"));
