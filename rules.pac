@@ -295,7 +295,7 @@ R.rules.push(new Rule("^http://(?:www\\.)?4sevens\\.com/", "https://www.4sevens.
 a("www.4sevens.com");
 a("4sevens.com");
 
-R = new RuleSet("6xq.net");
+R = new RuleSet("6xq.net (CAcert)");
 R.rules.push(new Rule("^http://(?:www\\.)?6xq\\.net/", "https://6xq.net/"));
 a("6xq.net");
 a("www.6xq.net");
@@ -511,6 +511,11 @@ R = new RuleSet("Aaai.org");
 R.rules.push(new Rule("^http://(?:www\\.)?aaai\\.org/", "https://www.aaai.org/"));
 a("aaai.org");
 a("www.aaai.org");
+
+R = new RuleSet("Aasi.ebm.fi");
+R.rules.push(new Rule("^http://aasi\\.ebm\\.fi-legacy\\.s3\\.amazonaws\\.com/", "https://s3-eu-west-1.amazonaws.com/aasi.ebm.fi-legacy/"));
+a("aasi.ebm.fi");
+a("aasi.ebm.fi-legacy.s3.amazonaws.com");
 
 R = new RuleSet("Abbo-shop.ch");
 R.rules.push(new Rule("^http://(?:www\\.)?abbo-shop\\.ch/", "https://www.abbo-shop.ch/"));
@@ -1049,11 +1054,6 @@ a("www.bww.com");
 a("lauramercier.com");
 a("www.lauramercier.com");
 
-R = new RuleSet("AltonTowers");
-R.rules.push(new Rule("^http://(?:www\\.)?altontowers\\.com/", "https://www.altontowers.com/"));
-a("altontowers.com");
-a("www.altontowers.com");
-
 R = new RuleSet("Amahi.org");
 R.rules.push(new Rule("^http://www\\.amahi\\.org/", "https://www.amahi.org/"));
 R.rules.push(new Rule("^http://wiki\\.amahi\\.org/", "https://wiki.amahi.org/"));
@@ -1072,6 +1072,7 @@ R.rules.push(new Rule("^http://developer\\.amazonwebservices\\.com/", "https://d
 R.rules.push(new Rule("^http://media\\.amazonwebservices\\.com/", "https://s3.amazonaws.com/awsmedia/"));
 R.rules.push(new Rule("^http://(?:(?:\\w-)?ec[2x]\\.images-|(?:rcm-)?images\\.)amazon\\.com/", "https://images-na.ssl-images-amazon.com/"));
 R.exclusions.push(new Exclusion("^http://static\\.via\\.me\\.s3\\.amazonaws\\.com/"));
+R.exclusions.push(new Exclusion("^http://img\\.wired\\.co\\.uk\\.s3\\.amazonaws.com/"));
 a("aws.amazon.com");
 a("signin.aws.amazon.com");
 a("aws-portal.amazon.com");
@@ -1227,7 +1228,7 @@ R.rules.push(new Rule("^http://([A-Za-z0-9\\-]+)\\.annualcreditreport\\.com/", "
 a("annualcreditreport.com");
 a("*.annualcreditreport.com");
 
-R = new RuleSet("Anomos");
+R = new RuleSet("Anomos (CAcert)");
 R.rules.push(new Rule("^http://(git\\.|www\\.)?anomos\\.info/", "https://$1anomos.info/"));
 a("anomos.info");
 a("*.anomos.info");
@@ -1252,7 +1253,7 @@ R.rules.push(new Rule("^http://(www\\.)?anybeat\\.com/", "https://www.anybeat.co
 a("www.anybeat.com");
 a("anybeat.com");
 
-R = new RuleSet("ao2.it");
+R = new RuleSet("ao2.it (CAcert)");
 R.rules.push(new Rule("^http://(www\\.)?ao2\\.it/", "https://$1.ao2.it/"));
 a("www.ao2.it");
 
@@ -1907,6 +1908,10 @@ R.exclusions.push(new Exclusion("^http://bauarbeiten\\.bahn\\.de/"));
 a("*.bahn.de");
 a("bahn.de");
 
+R = new RuleSet("Baker & Taylor (minimal)");
+R.rules.push(new Rule("^http://contentcafe2\\.btol\\.com/", "https://contentcafe2.btol.com/"));
+a("contentcafe2.btol.com");
+
 R = new RuleSet("Balatarin");
 R.rules.push(new Rule("^http://(?:www\\.)?balatarin\\.com/", "https://balatarin.com/"));
 a("balatarin.com");
@@ -2356,7 +2361,7 @@ a("www2.blocket.se");
 a("eas.blocket.se");
 
 R = new RuleSet("Blogger (partial)");
-R.rules.push(new Rule("^https?://img[12]\\.blogblog\\.com/", "https://www.blogger.com/"));
+R.rules.push(new Rule("^http://img([12])\\.blogblog\\.com/", "https://img$1.blogblog.com/"));
 R.rules.push(new Rule("^https?://(?:www\\.)?blogger\\.com/(buttons|img|static)/", "https://www.blogger.com/$1/"));
 R.rules.push(new Rule("^https?://(?:\\w+)\\.blog(?:ger|spot)\\.co(?:m|\\.uk)/favicon\\.ico", "https://www.blogger.com/favicon.ico"));
 R.rules.push(new Rule("^https?://[1-4]\\.bp\\.blogspot\\.com/", "https://lh3.ggpht.com/"));
@@ -2722,7 +2727,7 @@ R.rules.push(new Rule("^http://(chat\\.|www\\.)?cari\\.net/", "https://$1cari.ne
 a("cari.net");
 a("*.cari.net");
 
-R = new RuleSet("CACert.org");
+R = new RuleSet("CACert.org (CAcert)");
 R.rules.push(new Rule("^http://cacert\\.org/", "https://www.cacert.org/"));
 R.rules.push(new Rule("^http://([^/:@\\.]+)\\.cacert\\.org/", "https://$1.cacert.org/"));
 R.exclusions.push(new Exclusion("\\.crt"));
@@ -2742,7 +2747,7 @@ a("last.fm");
 a("*.last.fm");
 a("cdn.lst.fm");
 
-R = new RuleSet("ccc.de");
+R = new RuleSet("ccc.de (CAcert)");
 R.rules.push(new Rule("^http://ccc\\.de/", "https://www.ccc.de/"));
 R.rules.push(new Rule("^http://([^/:@\\.]+)\\.ccc\\.de/", "https://$1.ccc.de/"));
 R.exclusions.push(new Exclusion("^http://dasalte\\.ccc\\.de/"));
@@ -3569,7 +3574,7 @@ R.rules.push(new Rule("^http://(www\\.)?codeweavers\\.com/(css|images|login)/", 
 a("codeweavers.com");
 a("www.codeweavers.com");
 
-R = new RuleSet("Codecoop (CACert)");
+R = new RuleSet("Codecoop (CAcert)");
 R.rules.push(new Rule("^http://codecoop\\.org/", "https://codecoop.org/"));
 R.rules.push(new Rule("^http://([^/:@]*)\\.codecoop\\.org/", "https://$1.codecoop.org/"));
 a("codecoop.org");
@@ -4016,7 +4021,7 @@ a("crypto.is");
 a("wiki.crypto.is");
 a("blog.crypto.is");
 
-R = new RuleSet("CryptoSMS");
+R = new RuleSet("CryptoSMS (CAcert)");
 R.rules.push(new Rule("^http://(www\\.)?cryptosms\\.org/", "https://cryptosms.org/"));
 a("cryptosms.org");
 a("www.cryptosms.org");
@@ -4751,7 +4756,7 @@ R.rules.push(new Rule("^http://((images|secure|www)\\.)?dot5hosting\\.com/", "ht
 a("dot5hosting.com");
 a("*.dot5hosting.com");
 
-R = new RuleSet("DotBit");
+R = new RuleSet("DotBit (CAcert)");
 R.rules.push(new Rule("^http://(?:www\\.)?dot-bit\\.org/", "https://dot-bit.org/"));
 a("dot-bit.org");
 a("www.dot-bit.org");
@@ -4952,7 +4957,7 @@ R = new RuleSet("eBay (partial)");
 R.rules.push(new Rule("^http://((?:gift)?certificates|securethumbs|signin|spages\\.half|ocs)\\.ebay\\.com/", "https://$1.ebay.com/"));
 R.rules.push(new Rule("^https?://s?rtm\\.ebay\\.com/", "https://srtm.ebay.com/"));
 R.rules.push(new Rule("^https?://thumbs\\d?\\.ebay(?:static)?\\.com/", "https://securethumbs.ebay.com/"));
-R.rules.push(new Rule("^https?://(?:www\\.)?ebayclassifieds\\.com/", "https://ebayclassifieds.com/"));
+R.rules.push(new Rule("^https?://(?:www\\.)?ebayclassifieds\\.com/", "https://www.ebayclassifieds.com/"));
 R.rules.push(new Rule("^http://static(\\d)?\\.ebayclassifieds\\.com/", "https://static$1.ebayclassifieds.com/"));
 R.rules.push(new Rule("^https?://sr[vx](\\.\\w+)?\\.ebayrtm\\.com/", "https://srv$1.ebayrtm.com/"));
 R.rules.push(new Rule("^https?://(?:secure)?(include|ir|pics|rtm)\\.ebaystatic\\.com/", "https://secure$1.ebaystatic.com/"));
@@ -5611,7 +5616,7 @@ R.exclusions.push(new Exclusion("^http://www.examiner.com/tag/"));
 a("examiner.com");
 a("*.examiner.com");
 
-R = new RuleSet("Exherbo Linux (partial)");
+R = new RuleSet("Exherbo Linux (CAcert, partial)");
 R.rules.push(new Rule("^http://bugs\\.exherbo\\.org/", "https://bugs.exherbo.org/"));
 a("bugs.exherbo.org");
 
@@ -5671,7 +5676,7 @@ R.rules.push(new Rule("^http://(?:www\\.)?faancollegenetwork\\.org/", "https://w
 a("faancollegenetwork.org");
 a("www.faancollegenetwork.org");
 
-R = new RuleSet("Freie Arbeiterinnen- und Arbeiter-Union (FAU)");
+R = new RuleSet("Freie Arbeiterinnen- und Arbeiter-Union (FAU) (CAcert)");
 R.rules.push(new Rule("^http://(?:www\\.)?fau\\.org/", "https://www.fau.org/"));
 a("www.fau.org");
 a("fau.org");
@@ -6284,7 +6289,7 @@ R.rules.push(new Rule("^http://checksums\\.freenetproject\\.org/", "https://chec
 a("*.freenetproject.org");
 a("freenetproject.org");
 
-R = new RuleSet("Freenode.net");
+R = new RuleSet("Freenode.net (CAcert)");
 R.rules.push(new Rule("^http://(?:www\\.)?freenode\\.net/", "https://www.freenode.net/"));
 R.rules.push(new Rule("^http://(blog|dev|webchat)\\.freenode\\.net/", "https://$1.freenode.net/"));
 a("freenode.net");
@@ -6607,7 +6612,7 @@ a("*.gencat.cat");
 R = new RuleSet("Gentoo (partial)");
 R.rules.push(new Rule("^https?://store\\.gentoo\\.org/", "https://www.cafepress.com/officialgentoo"));
 R.rules.push(new Rule("^http://((?:\\d+\\.)?\\w+)\\.gentoo\\.org/", "https://$1.gentoo.org/"));
-R.exclusions.push(new Exclusion("^http://(anoncvs|archives|blogg|bouncer|devmanual|foundation|git\\.overlays|packages|security|sidebar|sources|torrent|www)\\."));
+R.exclusions.push(new Exclusion("^http://(anoncvs|archives|blogs|bouncer|devmanual|distfiles|foundation|git\\.overlays|packages|security|sidebar|sources|torrent|www)\\."));
 a("*.gentoo.org");
 a("*.bugs.gentoo.org");
 a("*.forums.gentoo.org");
@@ -6643,8 +6648,8 @@ a("german-design-council.de");
 a("*.german-design-council.de");
 
 R = new RuleSet("GetFirebug");
-R.rules.push(new Rule("^http://(?:www\\.)?(blog\\.)?getfirebug\\.com/", "https://$1getfirebug.com/"));
-a("*.getfirebug.com");
+R.rules.push(new Rule("^http://(?:www\\.)?getfirebug\\.com/", "https://getfirebug.com/"));
+a("www.getfirebug.com");
 a("getfirebug.com");
 
 R = new RuleSet("GetPersonas.com");
@@ -6828,7 +6833,7 @@ R.rules.push(new Rule("^https?://(?:www\\.)?gna\\.org/", "https://gna.org/"));
 a("gna.org");
 a("www.gna.org");
 
-R = new RuleSet("Gnumonks.org (partial)");
+R = new RuleSet("Gnumonks.org (CAcert, partial)");
 R.rules.push(new Rule("^http://(laforge|lists|svn)\\.gnumonks\\.org/", "https://$1.gnumonks.org/"));
 a("laforge.gnumonks.org");
 a("lists.gnumonks.org");
@@ -7372,7 +7377,7 @@ R.rules.push(new Rule("^http://(www\\.)?gynecomastia\\.org/", "https://www.gynec
 a("gynecomastia.org");
 a("www.gynecomastia.org");
 
-R = new RuleSet("HBoeck");
+R = new RuleSet("HBoeck (CAcert)");
 R.rules.push(new Rule("^http://(www\\.)?hboeck\\.de/", "https://$1hboeck.de/"));
 a("hboeck.de");
 a("www.hboeck.de");
@@ -7415,7 +7420,7 @@ R.rules.push(new Rule("^http://www\\.his\\.se/", "https://www.his.se/"));
 a("www.his.se");
 a("his.se");
 
-R = new RuleSet("HJCMS");
+R = new RuleSet("HJCMS (CAcert)");
 R.rules.push(new Rule("^http://(\\w+\\.)?hjcms\\.de/", "https://$1hjcms.de/"));
 a("hjcms.de");
 a("*.hjcms.de");
@@ -7704,7 +7709,7 @@ a("*.webmail.your-server.de");
 
 R = new RuleSet("Hewlett-Packard Company (partial)");
 R.rules.push(new Rule("^https?://3com\\.com/", "https://www.3com.com/"));
-R.rules.push(new Rule("^http://(b2bgw|login|www)\\.3com\\.com/", "https://$13com.com/"));
+R.rules.push(new Rule("^http://(b2bgw|login|www)\\.3com\\.com/", "https://$1.3com.com/"));
 R.rules.push(new Rule("^http://(?:www\\.)?compaq\\.com/", "https://www.compaq.com/"));
 R.rules.push(new Rule("^http://(www(-mo)?\\.)?eds\\.com/", "https://$1eds.com/"));
 R.rules.push(new Rule("^https?://hp\\.com/", "https://www.hp.com/"));
@@ -7722,7 +7727,7 @@ R.rules.push(new Rule("^http://(?:vausnzpro2\\.austin|20465\\.www2)\\.hp\\.com/"
 R.rules.push(new Rule("^http://(?:www\\.)?esca\\.hp\\.com/", "https://esca2.americas.hp.com/"));
 R.rules.push(new Rule("^http://esca3\\.europe\\.hp\\.com/", "https://esca3.europe.hp.com/"));
 R.rules.push(new Rule("^http://h41183\\.www4\\.hp\\.com/", "https://h41183.www4.hp.com/"));
-R.rules.push(new Rule("^http://(?:ssl|www\\.)?www8\\.hp\\.com/", "https://ssl.ww8.hp.com/"));
+R.rules.push(new Rule("^http://(?:ssl|www\\.)?www8\\.hp\\.com/", "https://ssl.www8.hp.com/"));
 R.rules.push(new Rule("^http://(?:secure|welcome)\\.hp-ww\\.com/", "https://secure.hp-ww.com/"));
 R.rules.push(new Rule("^http://by(?:\\.essl)?\\.optimost\\.com/", "https://by.essl.optimost.com/"));
 R.rules.push(new Rule("^http://(www\\.)?threatlinq\\.tippingpoint\\.com/", "https://$1threatlinq.tippingpoint.com/"));
@@ -8761,7 +8766,7 @@ a("www.ja.net");
 R = new RuleSet("JBoss");
 R.rules.push(new Rule("^http://([^/@:]*)\\.jboss\\.com/", "https://$1.jboss.com/"));
 R.rules.push(new Rule("^http://([^/@:]*)\\.jboss\\.org/", "https://$1.jboss.org/"));
-R.exclusions.push(new Exclusion("^http://download\\.jboss\\.(com|org)/"));
+R.exclusions.push(new Exclusion("^http://downloads?\\.jboss\\.(com|org)/"));
 a("jboss.com");
 a("*.jboss.com");
 a("*.jboss.org");
@@ -8940,7 +8945,7 @@ a("joslin.org");
 a("www.joslin.org");
 
 R = new RuleSet("Jottit");
-R.rules.push(new Rule("^http://jottit\\.com/", "https://jottit.com/"));
+R.rules.push(new Rule("^http://(www\\.)?jottit\\.com/", "https://www.jottit.com/"));
 R.rules.push(new Rule("^http://([^/:@\\.]+)\\.jottit\\.com/", "https://$1.jottit.com/"));
 a("jottit.com");
 a("*.jottit.com");
@@ -10166,7 +10171,7 @@ a("www.lovefood.com");
 a("lovemoney.com");
 a("*.lovemoney.com");
 
-R = new RuleSet("lp0");
+R = new RuleSet("lp0 (CAcert)");
 R.rules.push(new Rule("^http://(\\w+\\.)?lp0\\.eu/", "https://$1lp0.eu/"));
 a("lp0.eu");
 a("*.lp0.eu");
@@ -10627,7 +10632,7 @@ a("www.max.se");
 a("max.se");
 
 R = new RuleSet("MaxMind");
-R.rules.push(new Rule("^http://(www\\.)?maxmind\\.com/", "https://$1.maxmind.com/"));
+R.rules.push(new Rule("^http://(www\\.)?maxmind\\.com/", "https://$1maxmind.com/"));
 a("maxmind.com");
 a("www.maxmind.com");
 
@@ -10860,16 +10865,16 @@ a("mentor.com");
 a("*.mentor.com");
 a("*.store1.mentor.com");
 
-R = new RuleSet("MetaPress (partial)");
-R.rules.push(new Rule("^http://(www\\.)?metapress\\.org/(dynamic-file\\.axd|images/)", "https://www.metapress.org/$2"));
-a("metapress.org");
-a("www.metapress.org");
-
 R = new RuleSet("Metapress (partial)");
 R.rules.push(new Rule("^https?://(?:www\\.)?metapress\\.com/(account/|dynamic-file\\.axd|identities/(?:help|me)/|images/|personalization/)", "https://www.metapress.com/$1"));
 R.rules.push(new Rule("^http://s(hibboleth|pringerlink3)\\.metapress\\.com/", "https://s$1.metapress.com/"));
 a("metapress.com");
 a("*.metapress.com");
+
+R = new RuleSet("MetaPress (partial)");
+R.rules.push(new Rule("^http://(www\\.)?metapress\\.org/(dynamic-file\\.axd|images/)", "https://www.metapress.org/$2"));
+a("metapress.org");
+a("www.metapress.org");
 
 R = new RuleSet("Metrix");
 R.rules.push(new Rule("^http://(secure\\.|www\\.)?metrix\\.net/", "https://secure.metrix.net/"));
@@ -11062,7 +11067,7 @@ a("mixcloud.com");
 a("www.mixcloud.com");
 
 R = new RuleSet("Mixpanel (partial)");
-R.rules.push(new Rule("^http://(\\w\\.)?mixpanel\\.com/", "https://$1mixpanel.com/"));
+R.rules.push(new Rule("^http://(\\w+\\.)?mixpanel\\.com/", "https://$1mixpanel.com/"));
 R.exclusions.push(new Exclusion("^http://blog\\."));
 a("mixpanel.com");
 a("*.mixpanel.com");
@@ -12179,12 +12184,6 @@ R.rules.push(new Rule("^https?://amp\\.networksolutions\\.com/landing\\?code=(\\
 a("networksolutions.com");
 a("*.networksolutions.com");
 
-R = new RuleSet("Network for Good (partial)");
-R.rules.push(new Rule("^http://(\\w+\\.)?networkforgood\\.org/", "https://$1networkforgood.org/$1"));
-R.exclusions.push(new Exclusion("http://(www\\.)?networkforgood\\.org/$"));
-a("networkforgood.org");
-a("*.networkforgood.org");
-
 R = new RuleSet("NetworkWorld (partial)");
 R.rules.push(new Rule("^http://(?:www\\.)?networkworld\\.com/", "https://www.networkworld.com/"));
 R.rules.push(new Rule("^http://(www\\.)?subscribenww\\.com/", "https://$1subscribenww.com/"));
@@ -12608,7 +12607,7 @@ a("ornl.gov");
 a("www.ornl.gov");
 a("sustainability-ornl.org");
 
-R = new RuleSet("obnox.de (partial)");
+R = new RuleSet("obnox.de (CAcert, partial)");
 R.rules.push(new Rule("^http://blog\\.obnox\\.de/", "https://blog.obnox.de/"));
 a("blog.obnox.de");
 
@@ -12651,7 +12650,7 @@ a("www.ohloh.org");
 
 R = new RuleSet("OkCupid (partial)");
 R.rules.push(new Rule("^http://(?:akcdn\\.okccdn|cdn\\.okcimg)\\.com/media/", "https://www.okcupid.com/flat/media/"));
-R.rules.push(new Rule("^http://(?:akincludes\\.okccdn|(?:ads|includs)\\.okcimg|okcupid)\\.com/", "https://www.okcupid.com/"));
+R.rules.push(new Rule("^http://(?:akincludes\\.okccdn|(?:ads|includes)\\.okcimg|okcupid)\\.com/", "https://www.okcupid.com/"));
 R.rules.push(new Rule("^http://www\\.okcupid\\.com/(about/okcupid|careers|contact-us|daisy|flat/|help/\\w+|legal/terms|login|press/news|w3c/)", "https://www.okcupid.com/$1"));
 a("akcdn.okccdn.com");
 a("akincludes.okccdn.com");
@@ -12786,7 +12785,7 @@ a("opendns.com");
 a("*.opendns.com");
 a("d295hzzivaok4k.cloudfront.net");
 
-R = new RuleSet("OpenEZX.org (partial)");
+R = new RuleSet("OpenEZX.org (CAcert, partial)");
 R.rules.push(new Rule("^http://svn\\.openezx\\.(com|net|org)/", "https://svn.openezx.org/"));
 a("svn.openezx.com");
 a("svn.openezx.net");
@@ -12820,7 +12819,7 @@ a("rt.openssl.org");
 a("www.openssl.org");
 
 R = new RuleSet("OpenStreetMap Wiki");
-R.rules.push(new Rule("^http://openstreetmap\\.org/", "https://www.openstreemap.org/"));
+R.rules.push(new Rule("^http://openstreetmap\\.org/", "https://www.openstreetmap.org/"));
 R.rules.push(new Rule("^http://www\\.openstreetmap\\.org/(assets/|login|user/new)", "https://www.openstreetmap.org/$1"));
 R.rules.push(new Rule("^http://(piwik|wiki)\\.openstreetmap\\.org/", "https://$1.openstreetmap.org/"));
 a("openstreetmap.org");
@@ -12933,10 +12932,7 @@ a("*.oracle.com");
 a("*.edelivery.oracle.com");
 
 R = new RuleSet("Orange");
-R.rules.push(new Rule("^http://(?:www\\.)?orange\\.co\\.uk/", "https://www.orange.co.uk/"));
 R.rules.push(new Rule("^http://(?:www\\.)?orange\\.co\\.il/", "https://www.orange.co.il/"));
-a("orange.co.uk");
-a("www.orange.co.uk");
 a("www.orange.co.il");
 a("orange.co.il");
 
@@ -12968,7 +12964,7 @@ R.rules.push(new Rule("^http://(?:www\\.)?schweissgut\\.net/", "https://schweiss
 a("schweissgut.net");
 a("www.schweissgut.net");
 
-R = new RuleSet("Oscigen");
+R = new RuleSet("Oscigen (CAcert)");
 R.rules.push(new Rule("^http://(www\\.)?oscigen\\.org/", "https://oscigen.org/"));
 a("oscigen.org");
 a("www.oscigen.org");
@@ -13068,7 +13064,7 @@ R.rules.push(new Rule("^https?://(?:www\\.)?ozbargain\\.com\\.au/", "https://www
 a("ozbargain.com.au");
 a("www.ozbargain.com.au");
 
-R = new RuleSet("OzLabs");
+R = new RuleSet("OzLabs (CAcert)");
 R.rules.push(new Rule("^http://ozlabs\\.org/", "https://ozlabs.org/"));
 R.rules.push(new Rule("^http://([a-zA-Z0-9\\-\\.]+)\\.ozlabs\\.org/", "https://$1.ozlabs.org/"));
 R.exclusions.push(new Exclusion("^http://(git|librtas|patchwork|powerpc-utils|yaboot)\\.ozlabs\\.org/"));
@@ -13966,7 +13962,7 @@ R = new RuleSet("PrintFriendly (partial)");
 R.rules.push(new Rule("^http://cdn\\.printfriendly\\.org/", "https://s3.amazonaws.com/printnicer/"));
 a("cdn.printfriendly.org");
 
-R = new RuleSet("priv.at");
+R = new RuleSet("priv.at (CAcert)");
 R.rules.push(new Rule("^http://www\\.tahina\\.priv\\.at/", "https://www.tahina.priv.at/"));
 a("www.tahina.priv.at");
 
@@ -14044,11 +14040,6 @@ R = new RuleSet("ProjectHoneypot");
 R.rules.push(new Rule("^http://(?:www\\.)?projecthoneypot\\.org/", "https://www.projecthoneypot.org/"));
 a("projecthoneypot.org");
 a("www.projecthoneypot.org");
-
-R = new RuleSet("Project Syndicate");
-R.rules.push(new Rule("^http://(www\\.)?project-syndicate\\.org/", "https://www.project-syndicate.org/"));
-a("www.project-syndicate.org");
-a("project-syndicate.org");
 
 R = new RuleSet("Prolexic");
 R.rules.push(new Rule("^http://(\\w+\\.)prolexic\\.com/", "https://$1prolexic.com/"));
@@ -14167,7 +14158,7 @@ R.rules.push(new Rule("^http://(?:www\\.)?puritan\\.com/", "https://www.puritan.
 a("puritan.com");
 a("www.puritan.com");
 
-R = new RuleSet("Pypi");
+R = new RuleSet("Pypi (CACert)");
 R.rules.push(new Rule("^http://pypi\\.python\\.org/pypi", "https://pypi.python.org/pypi"));
 a("pypi.python.org");
 
@@ -16212,7 +16203,7 @@ R.rules.push(new Rule("^https?://www\\.statcounter\\.com/", "https://statcounter
 R.rules.push(new Rule("^https?://gs.statcounter.com/(cs|image)s/", "https://statcounter.com/$1s/"));
 R.rules.push(new Rule("^https?://www-beta\\.statcounter\\.com/", "https://statcounter.com/"));
 R.rules.push(new Rule("^https://gs\\.statcounter\\.com/($|MSLine\\.swf)", "http://gs.statcounter.com/$1"));
-R.exclusions.push(new Exclusion("^http://gs\\.statcounter\\.com/($|MSLine\\.swf)"));
+R.exclusions.push(new Exclusion("^http://gs\\.statcounter\\.com/($|MSLine\\.swf|press($|[\\?/]))"));
 a("statcounter.com");
 a("*.statcounter.com");
 
@@ -16513,7 +16504,7 @@ a("www.synopsys.co.jp");
 a("synopsys.com");
 a("*.synopsys.com");
 
-R = new RuleSet("sysmocom.de (partial)");
+R = new RuleSet("sysmocom.de (CAcert, partial)");
 R.rules.push(new Rule("^http://sysmocom\\.de/", "https://www.sysmocom.de/"));
 R.rules.push(new Rule("^http://(piwik|www)\\.sysmocom\\.de/", "https://$1.sysmocom.de/"));
 R.rules.push(new Rule("^http://shop\\.sysmocom\\.de/(assets|checkout|images|login|stylesheets)", "https://shop.sysmocom.de/$1"));
@@ -17536,6 +17527,7 @@ R.rules.push(new Rule("^http://(www\\.)?tumblr\\.com/($|login|photo/)", "https:/
 R.rules.push(new Rule("^https?://(?:secure\\.)?assets\\.tumblr\\.com/", "https://secure.assets.tumblr.com/"));
 R.rules.push(new Rule("^https?://(?:data|(?:\\d+\\.)?media)\\.tumblr\\.com/", "https://s3.amazonaws.com/data.tumblr.com/"));
 R.rules.push(new Rule("^https?://static\\.tumblr\\.com/", "https://s3.amazonaws.com/static.tumblr.com/"));
+R.exclusions.push(new Exclusion("^https?://assets\\.tumblr\\.com/javascript/tiny_mce_3_4_7/themes/advanced/source_editor\\.htm"));
 a("tumblr.com");
 a("*.tumblr.com");
 a("secure.assets.tumblr.com");
@@ -18860,6 +18852,7 @@ R.rules.push(new Rule("^http://steampowered\\.com/", "https://www.steampowered.c
 R.rules.push(new Rule("^http://(cafe|support|www)\\.steampowered\\.com/", "https://$1.steampowered.com/"));
 R.rules.push(new Rule("^http://store\\.steampowered\\.com/public/images/", "https://store.steampowered.com/public/images/"));
 R.rules.push(new Rule("^https?://cdn\\.(store\\.)?steampowered\\.com/", "https://$1steampowered.com/"));
+R.exclusions.push(new Exclusion("http://www\\.steampowered\\.com/status/survey\\.html"));
 a("steamcommunity.com");
 a("*.steamcommunity.com");
 a("steampowered.com");
@@ -19109,8 +19102,8 @@ a("cdn.static.viddler.com");
 a("support.viddler.com");
 a("www.viddler.com");
 
-R = new RuleSet("VideoLAN");
-R.rules.push(new Rule("^http://(?:images1?\\.)?videolan\\.org/", "https://videolan.org/"));
+R = new RuleSet("VideoLAN (CAcert)");
+R.rules.push(new Rule("^https?://(?:images1?\\.)?videolan\\.org/", "https://videolan.org/"));
 R.rules.push(new Rule("^http://(forum|trac|wiki|www)\\.videolan\\.org/", "https://$1.videolan.org/"));
 a("videolan.org");
 a("*.videolan.org");
@@ -19369,7 +19362,7 @@ R.rules.push(new Rule("^http://(www\\.)?wagner\\.edu/", "https://wagner.edu/"));
 a("www.wagner.edu");
 a("wagner.edu");
 
-R = new RuleSet("Warzone2100");
+R = new RuleSet("Warzone2100 (CAcert)");
 R.rules.push(new Rule("^http://wz2100\\.net/", "https://www.wz2100.net/"));
 R.rules.push(new Rule("^http://([^/:@\\.]+)\\.wz2100\\.net/", "https://$1.wz2100.net/"));
 a("wz2100.net");
@@ -19659,7 +19652,7 @@ a("9.*.wdfiles.com");
 a("wikidot.com");
 a("*.wikidot.com");
 
-R = new RuleSet("Wikipedia");
+R = new RuleSet("Wikimedia");
 R.rules.push(new Rule("^http://([^@:/]+\\.)?wik(ipedia|inews|isource|ibooks|iquote|iversity|tionary|imedia)\\.org/", "https://$1wik$2.org/"));
 R.rules.push(new Rule("^http://(www\\.)?mediawiki\\.org/", "https://$1mediawiki.org/"));
 R.rules.push(new Rule("^http://(www\\.)?wikimediafoundation\\.org/", "https://$1wikimediafoundation.org/"));
@@ -19941,7 +19934,7 @@ R = new RuleSet("XDA Developers (partial)");
 R.rules.push(new Rule("^http://(www\\.)?xda-developers\\.com/", "https://$1xda-developers.com/"));
 R.rules.push(new Rule("^http://forum\\.xda-developers\\.com/favicon\\.ico", "https://xda-developers.com/favicon.ico"));
 a("xda-developers.com");
-a("www.xda-developers.com");
+a("*.xda-developers.com");
 
 R = new RuleSet("XFCE (partial)");
 R.rules.push(new Rule("^http://(?:www\\.)?(bugzilla|forum|translations|wiki)\\.xfce\\.org/", "https://$1.xfce.org/"));
@@ -20082,6 +20075,7 @@ R.exclusions.push(new Exclusion("^http://weather\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://wordstat\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://www\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://openid\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://xml\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://(www\\.)?[^.]+\\.ya\\.ru/"));
 R.exclusions.push(new Exclusion("^http://mirror.yandex.ru/"));
 R.exclusions.push(new Exclusion("^http://probki\\.yandex\\.ru/"));
@@ -20098,6 +20092,7 @@ R.exclusions.push(new Exclusion("^http://suggest\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://suggest-[a-z]+\\.yandex\\.(ru|net)/"));
 R.exclusions.push(new Exclusion("^http://content\\.webmaster\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://m\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://mobile\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://internet.yandex.ru/"));
 R.exclusions.push(new Exclusion("^http://awaps\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://clck\\.yandex\\.ru/"));
@@ -20107,7 +20102,7 @@ R.exclusions.push(new Exclusion("^http://kiks\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://print\\.maps\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://market-click[0-9]+\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://mc\\.yandex\\.net/"));
-R.exclusions.push(new Exclusion("^http://mdata\\.yandex\\.net/"));
+R.exclusions.push(new Exclusion("^http://mdata\\.yandex\\.(ru|net)/"));
 R.exclusions.push(new Exclusion("^http://wrz\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://vec[0-9]+\\.maps\\.yandex\\.(ru|net)/"));
 R.exclusions.push(new Exclusion("^http://jgo\\.maps\\.yandex\\.(ru|net)/"));
@@ -20115,6 +20110,31 @@ R.exclusions.push(new Exclusion("^http://[^.]+-tub\\.yandex\\.net/"));
 R.exclusions.push(new Exclusion("^http://[^.]+-tub\\.yandex\\.ru/"));
 R.exclusions.push(new Exclusion("^http://[^.]+-tub-[^.]+\\.yandex\\.net/"));
 R.exclusions.push(new Exclusion("^http://[^.]+-tub-[^.]+\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://yaca\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://afisha\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://time\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://help\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://large\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://nahodki\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://zakladki\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://site\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://business\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://keyboard\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://api\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://advertising\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://fx\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://opera\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://browser\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://kaspersky\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://skype\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://punto\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://online\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://collection\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://navigator\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://widgets\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://soft\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://ie\\.yandex\\.ru/"));
+R.exclusions.push(new Exclusion("^http://tune\\.yandex\\.ru/"));
 a("yandex.ru");
 a("yandex.net");
 a("yandex.st");
@@ -20165,7 +20185,7 @@ a("*.ygnition.com");
 R = new RuleSet("Yieldmanager.com");
 R.rules.push(new Rule("^http://(ad|content-ssl)\\.yieldmanager\\.com/", "https://$1.yieldmanager.com/"));
 R.rules.push(new Rule("^http://((?:\\w+)(?:\\.\\w+)?)\\.dp\\.yieldmanager\\.net/", "https://$1.dp.yieldmanager.net/"));
-a("ad.yieldmanager.com");
+a("*.yieldmanager.com");
 a("*.yieldmanager.net");
 a("*.dp.yieldmanager.net");
 a("*.eu.dp.yieldmanager.net");
@@ -20211,8 +20231,10 @@ a("your-freedom.net");
 a("www.your-freedom.net");
 
 R = new RuleSet("Yourhosting");
-R.rules.push(new Rule("^http://webmail\\.server1\\.firstfind\\.nl/src/webmail\\.php", "https://webmail.server1.firstfind.nl/src/webmail.php"));
+R.rules.push(new Rule("^https?://webmail\\.server1\\.firstfind\\.nl/(?:.*)", "https://webmail.yourhosting.nl/"));
+R.rules.push(new Rule("^http://webmail\\.yourhosting\\.nl/", "https://webmail.yourhosting.nl/"));
 a("webmail.server1.firstfind.nl");
+a("webmail.yourhosting.nl");
 
 R = new RuleSet("Yubico");
 R.rules.push(new Rule("^http://yubico\\.com/", "https://yubico.com/"));
@@ -20697,7 +20719,7 @@ R.rules.push(new Rule("^http://(www\\.)?posti\\.fi/", "https://posti.fi/"));
 a("www.posti.fi");
 a("posti.fi");
 
-R = new RuleSet("schokokeks.org (CACert)");
+R = new RuleSet("schokokeks.org (CAcert)");
 R.rules.push(new Rule("^http://(source\\.|www\\.)?schokokeks\\.org/", "https://$1schokokeks.org/"));
 a("schokokeks.org");
 a("source.schokokeks.org");
