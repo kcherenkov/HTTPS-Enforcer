@@ -8369,10 +8369,11 @@ R.rules.push(new Rule("^http://(www\\.)?imgbox\\.com/(assets/|(?:dmca|help|login
 a("imgbox.com");
 a("www.imgbox.com");
 
-R = new RuleSet("Imgur");
+R = new RuleSet("Imgur (partial)");
 R.rules.push(new Rule("^http://(?:origin\\.|s\\.|www\\.)?imgur\\.com/", "https://imgur.com/"));
 R.rules.push(new Rule("^http://i\\.imgur\\.com/((images|include)(/.*)?)?$", "https://imgur.com/$1"));
 R.exclusions.push(new Exclusion("^http://api\\.imgur\\.com/"));
+R.exclusions.push(new Exclusion("^http://(www\\.)?imgur\\.com/($|\\w/\\w+\\??$)"));
 R.exclusions.push(new Exclusion("^http://(www\\.)?imgur\\.com/[a-zA-Z\\d]+\\.[a-z]+$"));
 a("imgur.com");
 a("*.imgur.com");
@@ -10500,12 +10501,8 @@ a("makemytrip.com");
 a("*.makemytrip.com");
 
 R = new RuleSet("Malwarebytes (partial)");
-R.rules.push(new Rule("^http://(?:(?:\\w+\\.)?cdn\\.)?static(?:-cdn)?\\.malwarebytes\\.org/", "https://static.malwarebytes.org/"));
-R.rules.push(new Rule("^http://(store|forums)\\.malwarebytes\\.org/", "https://$1.malwarebytes.org/"));
-R.exclusions.push(new Exclusion("^http://www\\.malwarebytes\\."));
-a("*.malwarebytes.org");
-a("*.static.malwarebytes.org");
-a("*.cdn.static.malwarebytes.org");
+R.rules.push(new Rule("^http://store\\.malwarebytes\\.org/", "https://store.malwarebytes.org/"));
+a("store.malwarebytes.org");
 a("*.store.malwarebytes.org");
 
 R = new RuleSet("Mamba");
@@ -14177,6 +14174,7 @@ a("*.qrobe.it");
 
 R = new RuleSet("Qt");
 R.rules.push(new Rule("^http://(\\w+\\.)?qt-project\\.org/", "https://qt-project.org/"));
+R.exclusions.push(new Exclusion("lists\\.qt-project\\.org"));
 a("qt-project.org");
 a("*.qt-project.org");
 
@@ -14199,7 +14197,7 @@ a("qualys.com");
 a("*.qualys.com");
 
 R = new RuleSet("Quantcast");
-R.rules.push(new Rule("^http://(ak\\.|www\\.)?quantcast\\.com/", "https://$1quantcast.com/"));
+R.rules.push(new Rule("^http://(ak\\.|www\\.)?quantcast\\.com/", "https://ak.quantcast.com/"));
 R.rules.push(new Rule("^https?://edge\\.quantserve\\.com/", "https://www.quantserve.com/"));
 R.rules.push(new Rule("^http://((?:[^/:@\\.]+)\\.)?quantserve\\.com/", "https://$1quantserve.com/"));
 a("quantcast.com");
@@ -15181,9 +15179,8 @@ a("www.sciencemag.org");
 
 R = new RuleSet("Scientific American (partial)");
 R.rules.push(new Rule("^http://(www\\.)?sciamdigital\\.com/(ax/|(cover)?images/|index\\.cfm\\?fa=Account\\.ViewLogin)/", "https://$1sciamdigital.com/$2/"));
+R.rules.push(new Rule("^https?://www\\.scientificamerican\\.com/media/cover/current\\.jpg", "https://www.scientificamerican.com/media/cover/current.cfm"));
 R.rules.push(new Rule("^http://(subscribe\\.|www\\.)?scientificamerican\\.com/", "https://$1scientificamerican.com/"));
-R.rules.push(new Rule("^https://www\\.scientificamerican\\.com/media/cover/current\\.jpg", "https://www.scientificamerican.com/media/cover/current.cfm"));
-R.exclusions.push(new Exclusion("^http://www\\.scientificamerican\\.com/media/cover/current\\.jpg"));
 a("sciamdigital.com");
 a("www.sciamdigital.com");
 a("scientificamerican.com");
@@ -20248,11 +20245,6 @@ a("upload.yubico.com");
 R = new RuleSet("Yuku (partial)");
 R.rules.push(new Rule("^http://(images|static)\\.yuku\\.com/", "https://s3.amazonaws.com/$1.yuku.com/"));
 a("*.yuku.com");
-
-R = new RuleSet("ZDNet");
-R.rules.push(new Rule("^http://(?:origin\\.|www\\.)?zdnet\\.com/", "https://www.zdnet.com/"));
-a("zdnet.com");
-a("*.zdnet.com");
 
 R = new RuleSet("ZTunnel");
 R.rules.push(new Rule("^http://(?:www\\.)?ztunnel\\.com/", "https://ztunnel.com/"));
