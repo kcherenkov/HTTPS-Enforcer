@@ -8832,7 +8832,7 @@ R.rules.push(new Rule("^http://cdn\\.imgjam\\.com/", "https://s3.amazonaws.com/i
 a("cdn.imgjam.com");
 
 R = new RuleSet("Jamie Oliver");
-R.rules.push(new Rule("^https?://(?:www\\.)?jamieoliver\\.com/", "https://$1jamieoliver.com/"));
+R.rules.push(new Rule("^https?://(?:www\\.)?jamieoliver\\.com/", "https://www.jamieoliver.com/"));
 a("jamieoliver.com");
 a("www.jamieoliver.com");
 
