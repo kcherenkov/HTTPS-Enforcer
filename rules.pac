@@ -19317,6 +19317,10 @@ a("washpost.com");
 a("*.washpost.com");
 a("subscription.washingtonpost.com");
 
+R = new RuleSet("waze.com");
+R.rules.push(new Rule("^http://*.waze\\.com/", "https://$1.waze.com/"));
+a("*.waze.com");
+
 R = new RuleSet("Weatherzone (partial)");
 R.rules.push(new Rule("^https?://weatherzone\\.com\\.au/", "https://www.weatherzone.com.au/"));
 R.rules.push(new Rule("^http://www\\.weatherzone\\.com\\.au/(customise\\.jsp|i(mag|nclud)es/|join/)", "https://www.weatherzone.com.au/$1"));
