@@ -10531,9 +10531,10 @@ R.rules.push(new Rule("^http://extranet\\.marvell\\.com/", "https://extranet.mar
 a("marvell.com");
 a("*.marvell.com");
 
-R = new RuleSet("Mashable.com");
+R = new RuleSet("Mashable.com (partial)");
 R.rules.push(new Rule("^http://(www\\.)?mashable\\.com/", "https://mashable.com/"));
 R.rules.push(new Rule("^https?://\\d\\.mshcdn\\.com/", "https://mashable.com/"));
+R.exclusions.push(new Exclusion("^https?://(?:(?:www\\.)?mashable|\\d\\.mshcdn)\\.com/(?:\\d{4}/\\d\\d/\\d\\d/[\\w\\-]+/?$|follow/(?:images/(?:facebook/|new_badges/\\d\\d/)?[\\w\\-]+\\.\\w{3}(?:$|\\?)|packages/wp-datauri\\.css(?:$|\\?)|stories/(?:shares\\.json|top/)(?:$|\\?)|uploads/(?:topic/image|user/avatar)/\\w\\w/))"));
 a("mashable.com");
 a("www.mashable.com");
 a("*.mshcdn.com");
@@ -12166,15 +12167,15 @@ R.rules.push(new Rule("^http://(global|www)\\.factiva\\.com/", "https://$1.facti
 R.rules.push(new Rule("^http://(?:www\\.)?fins\\.com/Finance/(css/|Images/)", "https://www.fins.com/Finance/$1"));
 R.rules.push(new Rule("^http://secure\\.nypost\\.com/", "https://secure.nypost.com/"));
 R.rules.push(new Rule("^http://(charts|m1|s)\\.smartmoney\\.net/", "https://a248.e.akamai.net/f/1731/67675/12h/$1.smartmoney.net/"));
-R.rules.push(new Rule("^http://sc\\.smartmoney\\.net/css/cssDependencies/hat-icons\\.css", "https://sc.wsj.net/"));
+R.rules.push(new Rule("^http://sc\\.smartmoney\\.net/css/cssDependencies/hat-icons\\.css", "https://a248.e.akamai.net/f/1731/67675/12h/sc.smartmoney.net/css/cssDependencies/hat-icons.css"));
 R.rules.push(new Rule("^http://secure\\.smartmoney\\.net/", "https://secure.smartmoney.net/"));
-R.rules.push(new Rule("^http://\\w+\\.wsj\\.com/(favicon\\.ico|img/|j20type\\.css|static_html_files/)", "https://s.wsj.net/$1"));
+R.rules.push(new Rule("^http://\\w+\\.wsj\\.com/(favicon\\.ico|img/|j20type\\.css|static_html_files/)", "https://a248.e.akamai.net/f/1731/67675/12h/s.wsj.net/$1"));
 R.rules.push(new Rule("^http://(classifieds|customercenter)\\.wsj\\.com/", "https://buy.wsj.com/"));
 R.rules.push(new Rule("^http://services\\.wsj(e)?\\.com/", "https://services.wsj$1.com/"));
-R.rules.push(new Rule("^http://barrons\\.wsj\\.net/", "https://s2.wsj.net/"));
-R.rules.push(new Rule("^http://(m|s[1-4i]?)?\\.wsj\\.net/", "https://$1.wsj.net/"));
+R.rules.push(new Rule("^http://barrons\\.wsj\\.net/", "https://a248.e.akamai.net/f/1731/67675/12h/s2.wsj.net/"));
+R.rules.push(new Rule("^https?://(m|s[1-4i]?)\\.wsj\\.net/", "https://a248.e.akamai.net/f/1731/67675/12h/$1.wsj.net/"));
 R.rules.push(new Rule("^https?://mw(\\d)\\.wsj\\.net/([mM][wW])5/", "https://a248.e.akamai.net/f/1731/67675/12h/mw$1.wsj.net/$25/"));
-R.rules.push(new Rule("^http://sc\\.wsj\\.net/css/(cssDependencies/hat-icons|standalone_partner_hat|teublog|wsjblog(?:_global(?:_2|_static)?)?)\\.css", "https://sc.wsj.net/css/$1.css"));
+R.rules.push(new Rule("^https?://sc\\.wsj\\.net/css/(cssDependencies/hat-icons|standalone_partner_hat|teublog|wsjblog(?:_global(?:_2|_static)?)?)\\.css", "https://a248.e.akamai.net/f/1731/67675/12h/css/$1.css"));
 R.rules.push(new Rule("^http://(www\\.)?wsjeuropesubs\\.com/", "https://$1wsjeuropesubs.com/"));
 R.rules.push(new Rule("^http://(?:www\\.)?wsjsafehouse\\.com/", "https://www.wsjsafehouse.com/"));
 R.exclusions.push(new Exclusion("http://bc\\.wsj\\.net/"));
