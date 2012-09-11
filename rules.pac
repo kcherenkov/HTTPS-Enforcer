@@ -2942,6 +2942,7 @@ a("cacetech.com");
 
 R = new RuleSet("CacheFly");
 R.rules.push(new Rule("^http://(?:\\d\\.)?([^@:/\\.]+)\\.cachefly\\.net/", "https://$1.cachefly.net/"));
+R.exclusions.push(new Exclusion("^http://(?:\\d\\.)?cachefly\\.cachefly\\.net/(?:speedtest/|.+\\.test)"));
 a("*.cachefly.net");
 
 R = new RuleSet("Cadence Design Systems (partial)");
@@ -3512,6 +3513,7 @@ a("www.clearchain.com");
 R = new RuleSet("cleverbridge (partial)");
 R.rules.push(new Rule("^http://(\\w+)\\.cleverbridge\\.(?:com|org)/", "https://$1.cleverbridge.com/"));
 R.exclusions.push(new Exclusion("^http://(events|saas)\\."));
+R.exclusions.push(new Exclusion("^http://message\\.cleverbridge\\.com/bin/icon_generator\\?key=captcha-key$"));
 a("cleverbridge.com");
 a("*.cleverbridge.com");
 a("cleverbridge.org");
@@ -12175,11 +12177,11 @@ R.rules.push(new Rule("^http://services\\.wsj(e)?\\.com/", "https://services.wsj
 R.rules.push(new Rule("^http://barrons\\.wsj\\.net/", "https://a248.e.akamai.net/f/1731/67675/12h/s2.wsj.net/"));
 R.rules.push(new Rule("^https?://(m|s[1-4i]?)\\.wsj\\.net/", "https://a248.e.akamai.net/f/1731/67675/12h/$1.wsj.net/"));
 R.rules.push(new Rule("^https?://mw(\\d)\\.wsj\\.net/([mM][wW])5/", "https://a248.e.akamai.net/f/1731/67675/12h/mw$1.wsj.net/$25/"));
-R.rules.push(new Rule("^https?://sc\\.wsj\\.net/css/(cssDependencies/hat-icons|standalone_partner_hat|teublog|wsjblog(?:_global(?:_2|_static)?)?)\\.css", "https://a248.e.akamai.net/f/1731/67675/12h/css/$1.css"));
+R.rules.push(new Rule("^https?://sc\\.wsj\\.net/css/(cssDependencies/hat-icons|standalone_partner_hat|teublog|wsjblog(?:_global(?:_2|_static)?)?)\\.css", "https://a248.e.akamai.net/f/1731/67675/12h/sc.wsj.net/css/$1.css"));
 R.rules.push(new Rule("^http://(www\\.)?wsjeuropesubs\\.com/", "https://$1wsjeuropesubs.com/"));
 R.rules.push(new Rule("^http://(?:www\\.)?wsjsafehouse\\.com/", "https://www.wsjsafehouse.com/"));
 R.exclusions.push(new Exclusion("http://bc\\.wsj\\.net/"));
-R.exclusions.push(new Exclusion("^http://barrons\\.wsj\\.net/djstyle/"));
+R.exclusions.push(new Exclusion("^http://barrons\\.wsj\\.net/(css/barronsDependencies|djstyle)/"));
 a("om.dowjoneson.com");
 a("efinancialnews.com");
 a("www.efinancialnews.com");
@@ -13409,11 +13411,8 @@ a("picplz.com");
 a("www.picplz.com");
 
 R = new RuleSet("Pidgin (partial)");
-R.rules.push(new Rule("^http://(www\\.)?pidgin\\.im/shared/", "https://developer.pidgin.im/shared/"));
 R.rules.push(new Rule("^http://developer\\.pidgin\\.im/(chrome|extension|static|viewmtn)/", "https://developer.pidgin.im/$1/"));
-a("pidgin.im");
 a("developer.pidgin.im");
-a("www.pidgin.im");
 
 R = new RuleSet("Pinboard.in");
 R.rules.push(new Rule("^http://(www\\.)?pinboard\\.in/", "https://pinboard.in/"));
@@ -16365,7 +16364,7 @@ R.rules.push(new Rule("^https?://(mynortonaccount|norton|symantec)\\.com/", "htt
 R.rules.push(new Rule("^http://(account|buy(?:-static1?)?|now-static|onlinefamily|safeweb|static-wap|us|www)\\.norton\\.com/", "https://$1.norton.com/"));
 R.rules.push(new Rule("^https?://om\\.symantec\\.com/", "https://veritasnonconsumer.122.2o7.net/"));
 R.rules.push(new Rule("^http://(oms|productadvisor|sitedirector|solutions|symaccount|webdl|www(?:-secure)?)\\.symantec\\.com/", "https://$1.symantec.com/"));
-R.exclusions.push(new Exclusion("^http://www\\.symantec\\.com/connect/($|all-connect$|articles/|blogs/|forums/)"));
+R.exclusions.push(new Exclusion("^http://www\\.symantec\\.com/connect/($|all-connect$|articles/|blogs/|imagebrowser/view/image/|forums/)"));
 a("mynortonaccount.com");
 a("www.mynortonaccount.com");
 a("norton.com");
@@ -16777,10 +16776,6 @@ a("*.bethere.co.uk");
 a("windows.mouselike.org");
 a("o2.co.uk");
 a("www.o2.co.uk");
-
-R = new RuleSet("Telegraph (mismatches)");
-R.rules.push(new Rule("^http://fashionshop\\.telegraph\\.co\\.uk/", "https://fashionshop.telegraph.co.uk/"));
-a("fashionshop.telegraph.co.uk");
 
 R = new RuleSet("Telegraph Media Group (partial)");
 R.rules.push(new Rule("^http://(announcements|auth|jobs)\\.telegraph\\.co\\.uk/", "https://$1.telegraph.co.uk/"));
