@@ -1728,6 +1728,8 @@ R = new RuleSet("BBC (partial)");
 R.rules.push(new Rule("^https?://(sa|static)\\.bbci?\\.co\\.uk/", "https://$1.bbc.co.uk/"));
 R.rules.push(new Rule("^https?://(?:www\\.)?bbc\\.co\\.uk/(favicon\\.ico$|glow/|guidance/|iplayer/)", "https://www.bbc.co.uk/$1"));
 R.rules.push(new Rule("^https?://node[12]\\.bbcimg\\.co\\.uk/iplayer/", "https://www.bbc.co.uk/iplayer/"));
+R.rules.push(new Rule("^https://www\\.bbc\\.co\\.uk/iplayer/episode/(\\w+/(?:hd/)?\\w+/?(?:$|\\?))", "http://www.bbc.co.uk/iplayer/episode/$1"));
+R.exclusions.push(new Exclusion("^http://www\\.bbc\\.co\\.uk/iplayer/episode/\\w+/(?:hd/)?\\w+/?(?:$|\\?)"));
 a("bbc.co.uk");
 a("*.bbc.co.uk");
 a("static.bbci.co.uk");
@@ -2225,11 +2227,6 @@ R.rules.push(new Rule("^http://www\\.bitnamihosting\\.com/", "https://app.bitnam
 R.rules.push(new Rule("^http://(app\\.)?bitnamihosting\\.com/", "https://$1bitnamihosting.com/"));
 a("bitnamihosting.com");
 a("*.bitnamihosting.com");
-
-R = new RuleSet("BitTorrent");
-R.rules.push(new Rule("^http://(\\w+\\.)?bittorrent\\.com/", "https://$1bittorrent.com/"));
-a("bittorrent.com");
-a("*.bittorrent.com");
 
 R = new RuleSet("Bitcoin Börse");
 R.rules.push(new Rule("^http://(?:www\\.)?mybitcointrade\\.com/", "https://mybitcointrade.com/"));
@@ -14890,12 +14887,6 @@ R = new RuleSet("Python.org SVN");
 R.rules.push(new Rule("^http://svn\\.python\\.org/", "https://svn.python.org/"));
 a("svn.python.org");
 
-R = new RuleSet("SVT.se");
-R.rules.push(new Rule("^http://svt\\.se/", "https://svt.se/"));
-R.rules.push(new Rule("^http://www\\.svt\\.se/", "https://svt.se/"));
-a("svt.se");
-a("www.svt.se");
-
 R = new RuleSet("Sabnzbd Forum");
 R.rules.push(new Rule("^http://forums\\.sabnzbd\\.org/", "https://forums.sabnzbd.org/"));
 a("forums.sabnzbd.org");
@@ -20573,13 +20564,6 @@ R.rules.push(new Rule("^http://(www\\.)?turku\\.fi/", "https://www.turku.fi/"));
 R.rules.push(new Rule("^https://turku\\.fi/", "https://www.turku.fi/"));
 a("www.turku.fi");
 a("turku.fi");
-
-R = new RuleSet("µTorrent (partial)");
-R.rules.push(new Rule("^https?://utorrent\\.com/", "https://www.utorrent.com/"));
-R.rules.push(new Rule("^http://(\\w+)\\.utorrent\\.com/", "https://$1.utorrent.com/"));
-R.exclusions.push(new Exclusion("^http://blog\\."));
-a("utorrent.com");
-a("*.utorrent.com");
 
 R = new RuleSet("vhf (partial)");
 R.rules.push(new Rule("^http://shop\\.vhf\\.de/", "https://shop.vhf.de/"));
