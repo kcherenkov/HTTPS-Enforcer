@@ -1911,8 +1911,11 @@ a("*.bahn.de");
 a("bahn.de");
 
 R = new RuleSet("Baker & Taylor (minimal)");
-R.rules.push(new Rule("^http://contentcafe2\\.btol\\.com/", "https://contentcafe2.btol.com/"));
+R.rules.push(new Rule("^http://(contentcafe2|images[abc])\\.btol\\.com/", "https://$1.btol.com/"));
 a("contentcafe2.btol.com");
+a("imagesa.btol.com");
+a("imagesb.btol.com");
+a("imagesc.btol.com");
 
 R = new RuleSet("Balatarin");
 R.rules.push(new Rule("^http://(?:www\\.)?balatarin\\.com/", "https://balatarin.com/"));
@@ -9698,6 +9701,7 @@ R.rules.push(new Rule("^http://f\\.cl\\.ly/", "https://s3.amazonaws.com/f.cl.ly/
 a("f.cl.ly");
 
 R = new RuleSet("Link+ Catalog");
+R.rules.push(new Rule("^https://csul\\.iii\\.com/search~S0\\?/([^/]+)/([^/]+)/([^/]+)/bibimage($|[^a-zA-Z])", "http://csul.iii.com/search~S0?/$1/$2/$3/bibimage$4"));
 R.rules.push(new Rule("^http://csul\\.iii\\.com/", "https://csul.iii.com/"));
 a("csul.iii.com");
 
@@ -10842,7 +10846,7 @@ R.rules.push(new Rule("^https?://blogs\\.msdn\\.com/(.*(?:\\.aspx|\\.xml|/))?$",
 R.rules.push(new Rule("^https?://search\\.microsoft\\.com/(global/oneMscomSettings|shared)/", "https://www.microsoft.com/$1/"));
 R.rules.push(new Rule("^http://support\\.microsoft\\.com/((?:common|library|[sS]tyles)/|LTS/default\\.aspx)", "https://support.microsoft.com/$1"));
 R.rules.push(new Rule("^https?://(?:origin-)?res[12]?\\.windows\\.microsoft\\.com/", "https://origin-res.windows.microsoft.com/"));
-R.rules.push(new Rule("^http://social\\.technet\\.microsoft\\.com/wiki/", "https://social.technet.microsoft.com/"));
+R.rules.push(new Rule("^http://social\\.technet\\.microsoft\\.com/wiki/", "https://social.technet.microsoft.com/wiki/"));
 R.rules.push(new Rule("^https?://update\\.microsoft\\.com/", "https://www.update.microsoft.com/"));
 R.rules.push(new Rule("^http://v([45])\\.windowsupdate\\.microsoft\\.com/", "https://v$1.windowsupdate.microsoft.com/"));
 R.rules.push(new Rule("^https?://(?:www\\.)?microsoftstore\\.com/", "https://www.microsoftstore.com/"));
