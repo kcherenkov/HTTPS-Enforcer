@@ -464,6 +464,7 @@ R.rules.push(new Rule("^https?://(?:o|s(ns-static)?)\\.aolcdn\\.com/", "https://
 R.rules.push(new Rule("^https?://(?:(?:home|www)\\.)?netscape\\.com/", "https://netscape.aol.com/"));
 R.rules.push(new Rule("^https?://(?:web)?mail\\.netscape\\.com/", "https://my.screenname.aol.com/_cqr/login/login.psp?sitedomain=sns.webmail.aol.com"));
 R.exclusions.push(new Exclusion("^http://o\\.aolcdn\\.com/(dims-global|mars|myfeeds|portaleu)/"));
+R.exclusions.push(new Exclusion("^http://my\\.screenname\\.aol\\.com/_cqr/logout/"));
 a("aim.com");
 a("*.aim.com");
 a("aol.com");
@@ -13202,8 +13203,12 @@ a("*.partypoker.com");
 a("p.iivt.com");
 
 R = new RuleSet("PassThePopcorn");
-R.rules.push(new Rule("^http://passthepopcorn\\.me/", "https://passthepopcorn.me/"));
+R.rules.push(new Rule("^http://(www\\.)?passthepopcorn\\.me/", "https://tls.passthepopcorn.me/"));
+R.rules.push(new Rule("^http://(static|tls)\\.passthepopcorn\\.me/", "https://$1.passthepopcorn.me/"));
 a("passthepopcorn.me");
+a("www.passthepopcorn.me");
+a("static.passthepopcorn.me");
+a("tls.passthepopcorn.me");
 
 R = new RuleSet("PasswordCard");
 R.rules.push(new Rule("^http://(?:www\\.)?passwordcard\\.org/", "https://www.passwordcard.org/"));
@@ -13475,8 +13480,14 @@ a("piratereverse.info");
 a("www.piratereverse.info");
 
 R = new RuleSet("Piriform (partial)");
+R.rules.push(new Rule("^https://piriform\\.com/", "https://www.piriform.com/"));
+R.rules.push(new Rule("^http://(www\\.)?piriform\\.com/", "https://www.piriform.com/"));
+R.rules.push(new Rule("^http://secure\\.piriform\\.com/", "https://secure.piriform.com/"));
 R.rules.push(new Rule("^http://static\\.piriform\\.com/", "https://s3.amazonaws.com/static.piriform.com/"));
 a("static.piriform.com");
+a("www.piriform.com");
+a("piriform.com");
+a("secure.piriform.com");
 
 R = new RuleSet("Piscatus.se");
 R.rules.push(new Rule("^http://www\\.piscatus\\.se/", "https://www.piscatus.se/"));
@@ -19437,9 +19448,12 @@ a("westpac.com.au");
 a("*.westpac.com.au");
 
 R = new RuleSet("WhatCD");
-R.rules.push(new Rule("^http://(?:www\\.)?what\\.cd/$", "https://what.cd/"));
+R.rules.push(new Rule("^http://(www\\.)?what\\.cd/", "https://what.cd/"));
+R.rules.push(new Rule("^http://(m|ssl)\\.what\\.cd/", "https://$1.what.cd/"));
 a("what.cd");
 a("www.what.cd");
+a("m.what.cd");
+a("ssl.what.cd");
 
 R = new RuleSet("WhatIsMyIP");
 R.rules.push(new Rule("^http://(?:www\\.)?whatismyip\\.com/", "https://www.whatismyip.com/"));
@@ -20419,9 +20433,10 @@ R.rules.push(new Rule("^http://(www\\.)?itella\\.fi/", "https://itella.fi/"));
 a("www.itella.fi");
 a("itella.fi");
 
-R = new RuleSet("kirjoitusalusta.fi");
-R.rules.push(new Rule("^http://(www\\.)?kirjoitusalusta\\.fi/", "https://kirjoitusalusta.fi/"));
-a("www.kirjoitusalusta.fi");
+R = new RuleSet("Kirjoitusalusta");
+R.rules.push(new Rule("^http://kirjoitusalusta\\.fi/", "https://kirjoitusalusta.fi/"));
+R.rules.push(new Rule("^http://([^/:@]*)\\.kirjoitusalusta\\.fi/", "https://$1.kirjoitusalusta.fi/"));
+a("*.kirjoitusalusta.fi");
 a("kirjoitusalusta.fi");
 
 R = new RuleSet("netzclub");
