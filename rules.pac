@@ -11192,7 +11192,7 @@ R.rules.push(new Rule("^http://(www\\.)?(drumbeat|webfwd|webmaker)\\.org/", "htt
 R.rules.push(new Rule("^http://((?:blog|crash-stats|input|people|support|www)\\.)?mozilla\\.com/", "https://$1mozilla.com/"));
 R.rules.push(new Rule("^https?://(?:www\\.)?mozilla\\.net/", "https://www.mozilla.org/"));
 R.rules.push(new Rule("^http://(static(?:-ssl)?-cdn\\.addons|video-cdn)\\.mozilla\\.net/", "https://$1.mozilla.net/"));
-R.rules.push(new Rule("^http://((?:addons|blog|bugzilla|bzr|communitystore|creative|developer|directory|donate|education|etherpad|firefoxlive|forums(?:\\.addons)?|ftp|input|intlstore|krakenbenchmark|l10n|lists|localize|hacks|hg|labs|mail|mpl|mxr|nightly|studentreps|support|tbpl|quality|wiki|www)\\.)?mozilla\\.org/", "https://$1mozilla.org/"));
+R.rules.push(new Rule("^http://((?:addons|blog|bugzilla|bzr|communitystore|creative|developer|directory|donate|education|etherpad|firefoxlive|forums(?:\\.addons)?|ftp|input|intlstore|l10n|lists|localize|hacks|hg|labs|mail|mpl|mxr|nightly|studentreps|support|tbpl|quality|wiki|www)\\.)?mozilla\\.org/", "https://$1mozilla.org/"));
 R.rules.push(new Rule("^https?://affiliates(?:-cdn)?\\.mozilla\\.org/", "https://affiliates.mozilla.org/"));
 R.rules.push(new Rule("^https?://people\\.mozilla\\.org/", "https://people.mozilla.com/"));
 R.rules.push(new Rule("^https?://talkback-public\\.mozilla\\.org/", "https://crash-stats.mozilla.com/"));
@@ -12538,7 +12538,7 @@ R.rules.push(new Rule("^http://blog\\.obnox\\.de/", "https://blog.obnox.de/"));
 a("blog.obnox.de");
 
 R = new RuleSet("Office.co.uk (partial)");
-R.rules.push(new Rule("^http://(www\\.)?office\\.co\\.uk/(img|images|javascript|scripts|styles)/", "https://www.office.co.uk/$1/"));
+R.rules.push(new Rule("^http://(?:www\\.)?office\\.co\\.uk/(img|images|javascript|scripts|styles)/", "https://www.office.co.uk/$1/"));
 a("office.co.uk");
 a("www.office.co.uk");
 
@@ -15806,10 +15806,6 @@ a("astaro.com");
 a("*.astaro.com");
 a("gpp.partners.sophos.com");
 a("*.sophos.com");
-
-R = new RuleSet("Soton.ac.uk");
-R.rules.push(new Rule("^http://www\\.soton\\.ac\\.uk/", "https://www.soton.ac.uk/"));
-a("www.soton.ac.uk");
 
 R = new RuleSet("SoundUnwound");
 R.rules.push(new Rule("^http://(www\\.)?soundunwound\\.com/", "https://www.soundunwound.com/"));
