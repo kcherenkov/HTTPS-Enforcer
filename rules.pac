@@ -12710,6 +12710,7 @@ R.exclusions.push(new Exclusion("^http://block\\.opendns\\.com/"));
 R.exclusions.push(new Exclusion("^http://guide\\.opendns\\.com/"));
 R.exclusions.push(new Exclusion("^http://feeds\\.opendns\\.com/"));
 R.exclusions.push(new Exclusion("^http://malware\\.opendns\\.com/"));
+R.exclusions.push(new Exclusion("^http://info\\.opendns\\.com/"));
 a("opendns.com");
 a("*.opendns.com");
 
@@ -13152,11 +13153,6 @@ a("css.pantheos.com");
 a("media.pantheos.com");
 a("wp.patheos.com");
 a("www.pantheos.com");
-
-R = new RuleSet("Paper.li");
-R.rules.push(new Rule("^http://(www\\.)?paper\\.li/", "https://paper.li/"));
-a("paper.li");
-a("www.paper.li");
 
 R = new RuleSet("Paradox Interactive (partial)");
 R.rules.push(new Rule("^http://connect\\.paradoxplaza\\.com/", "https://connect.paradoxplaza.com/"));
@@ -14157,7 +14153,7 @@ a("www.rca.org");
 
 R = new RuleSet("RFC-Editor");
 R.rules.push(new Rule("^http://(?:www\\.)?rfc-editor\\.org/", "https://www.rfc-editor.org/"));
-R.exclusions.push(new Exclusion("^http://(www\\.)?rfc-editor\\.org/errata(_search)?\\.php$"));
+R.exclusions.push(new Exclusion("^http://(www\\.)?rfc-editor\\.org/errata(_search)?\\.php(?:$|\\?)"));
 a("rfc-editor.org");
 a("www.rfc-editor.org");
 
@@ -14478,6 +14474,11 @@ a("infosecurity-magazine.com");
 a("www.infosecurity-magazine.com");
 a("lexisnexis.com");
 a("www.lexisnexis.com");
+
+R = new RuleSet("Referly");
+R.rules.push(new Rule("^http://(?:www\\.)?refer\\.ly/", "https://refer.ly/"));
+a("www.refer.ly");
+a("refer.ly");
 
 R = new RuleSet("Refrog");
 R.rules.push(new Rule("^http://(?:www\\.)?refog\\.com/", "https://www.refog.com/"));
@@ -18479,9 +18480,10 @@ R.rules.push(new Rule("^http://(?:www\\.)?noc\\.soton\\.ac\\.uk/", "https://www.
 R.rules.push(new Rule("^http://(?:www\\.)?sussed\\.soton\\.ac\\.uk/", "https://sussed.soton.ac.uk/"));
 a("noc.ac.uk");
 a("*.noc.ac.uk");
+a("soton.ac.uk");
 a("www.jobs.soton.ac.uk");
 a("www.noc.soton.ac.uk");
-a("sussed.soton.ac.uk");
+a("*.soton.ac.uk");
 a("www.sussed.soton.ac.uk");
 
 R = new RuleSet("University of Southern California (partial)");
