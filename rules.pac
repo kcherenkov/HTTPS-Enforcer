@@ -926,6 +926,7 @@ R.rules.push(new Rule("^http://a248\\.e\\.akamai\\.net/", "https://a248.e.akamai
 R.rules.push(new Rule("^http://([^@:/\\.]+)\\.akamaihd\\.net/", "https://$1.akamaihd.net/"));
 R.rules.push(new Rule("^http://(?:[\\w\\-]+)\\.speedera\\.net/", "https://ssl.speedera.net/"));
 R.exclusions.push(new Exclusion("^http://labolatv-f\\.akamaihd\\.net/ABola_live_"));
+R.exclusions.push(new Exclusion("^http://svtklipp-f\\.akamaihd\\.net/"));
 a("*.abmr.net");
 a("a248.e.akamai.net");
 a("*.akamaihd.net");
@@ -1245,9 +1246,9 @@ a("www.ansa.it");
 a("ansa.it");
 
 R = new RuleSet("AntiSpam e.V.");
-R.rules.push(new Rule("^http://(?:www\\.)?antispam\\.de/", "https://www.antispam.de/"));
-a("antispam.de");
-a("www.antispam.de");
+R.rules.push(new Rule("^http://(?:www\\.)?antispam-ev\\.de/", "https://www.antispam-ev.de/"));
+a("antispam-ev.de");
+a("www.antispam-ev.de");
 
 R = new RuleSet("Anybeat");
 R.rules.push(new Rule("^http://(www\\.)?anybeat\\.com/", "https://www.anybeat.com/"));
@@ -3554,6 +3555,7 @@ a("*.cloudswitch.com");
 
 R = new RuleSet("Cloudfront");
 R.rules.push(new Rule("^http://([^/:@\\.]+)\\.cloudfront\\.net/", "https://$1.cloudfront.net/"));
+R.exclusions.push(new Exclusion("^http://d1b14unh5d6w7g\\.cloudfront\\.net"));
 a("www.cloudfront.net");
 a("*.cloudfront.net");
 
@@ -5757,11 +5759,11 @@ a("ftd.de");
 
 R = new RuleSet("Facebook");
 R.rules.push(new Rule("^http://(?:www\\.)?f(?:acebook|b)\\.com/", "https://www.facebook.com/"));
-R.rules.push(new Rule("^http://(developers|graph|login|m|ssl|static-ak|www\\.v6)\\.facebook\\.com/", "https://$1.facebook.com/"));
+R.rules.push(new Rule("^http://(\\w\\w-\\w\\w|developers|graph|login|m|ssl|static-ak|www\\.v6)\\.facebook\\.com/", "https://$1.facebook.com/"));
 R.rules.push(new Rule("^http://(profile|s-static)\\.ak\\.facebook\\.com/", "https://$1.ak.facebook.com/"));
 R.rules.push(new Rule("^https?://badge\\.facebook\\.com/badge/", "https://www.facebook.com/badge/"));
-R.rules.push(new Rule("^https?://(?:de-de|fr-fr)\\.facebook\\.com/", "https://www.facebook.com/"));
-R.rules.push(new Rule("^https?://(?:(?:de-de|fr-fr)\\.|www\\.)?facebook\\.(?:de|fr)/", "https://www.facebook.com/"));
+R.rules.push(new Rule("^https?://www\\.facebook\\.(de|fr)/", "https://$1-$1.facebook.com/"));
+R.rules.push(new Rule("^https?://(?:(?:de-de|fr-fr)\\.|www\\.)?facebook\\.(de|fr)/", "https://$1-$1.facebook.com/"));
 R.rules.push(new Rule("^http://connect\\.facebook\\.net/", "https://connect.facebook.net/"));
 R.rules.push(new Rule("^https?://profile\\.ak\\.fbcdn\\.net/", "https://fbcdn-profile-a.akamaihd.net/"));
 R.rules.push(new Rule("^https?://(?:s-)?static\\.ak\\.fbcdn\\.net/", "https://s-static.ak.fbcdn.net/"));
@@ -5779,7 +5781,6 @@ a("*.fbcdn.net");
 a("*.ak.fbcdn.net");
 
 R = new RuleSet("Facebook Apps");
-R.rules.push(new Rule("^http://[a-z][a-z]-[a-z][a-z]\\.facebook\\.com/", "https://www.facebook.com/"));
 R.rules.push(new Rule("^http://apps\\.facebook\\.com/", "https://apps.facebook.com/"));
 a("facebook.com");
 a("*.facebook.com");
@@ -8095,6 +8096,8 @@ a("idnet.net");
 a("www.idnet.net");
 
 R = new RuleSet("IEEE (partial)");
+R.rules.push(new Rule("^https?://(?:www\\.)?ieee\\.org/go/renew/?$", "https://www.ieee.org/membership-application/public/renew.html"));
+R.rules.push(new Rule("^https?://(?:www\\.)?ieee\\.org/go/shop/?$", "https://www.ieee.org/membership-catalog/index.html"));
 R.rules.push(new Rule("^https?://(?:www\\.)?ieee\\.org/", "https://www.ieee.org/"));
 R.rules.push(new Rule("^http://eleccomm\\.ieee\\.org/(aliase|cs|image)s/", "https://eleccomm.ieee.org/$1s/"));
 R.rules.push(new Rule("^http://(uce|origin\\.www)\\.ieee\\.org/", "https://$1.ieee.org/"));
@@ -11131,7 +11134,7 @@ R.rules.push(new Rule("^http://www\\.motesplatsen\\.se/", "https://www.motesplat
 a("www.motesplatsen.se");
 
 R = new RuleSet("MotherJones.com (partial)");
-R.rules.push(new Rule("^http://(www\\.)?motherjones\\.com/(files|misc|themes)/", "https://motherjones.com/sites/all/$2/"));
+R.rules.push(new Rule("^http://(www\\.)?motherjones\\.com/(files|misc|themes)/", "https://$1motherjones.com/$2/"));
 a("motherjones.com");
 a("www.motherjones.com");
 
