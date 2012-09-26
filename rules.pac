@@ -1139,7 +1139,7 @@ R.rules.push(new Rule("^http://publish\\.aps\\.org/(login|signup)", "https://pub
 R.rules.push(new Rule("^http://publish\\.aps\\.org/favicon\\.ico", "https://www.aps.org/favicon.ico/"));
 R.rules.push(new Rule("^http://(authors|referees|tesseract-assets)\\.aps\\.org/", "https://$1.aps.org/"));
 R.rules.push(new Rule("^http://(?:www\\.)?aps\\.org/(commonspot/|elementadmin/|[\\w\\-_/]+images/|style/|templates/|)", "https://www.aps.org/$1"));
-R.exclusions.push(new Exclusion("^http://(counter|feeds|physics|pr[bl]|prola)\\."));
+R.exclusions.push(new Exclusion("^http://(counter|feeds|physics|pr[bel]|prola)\\."));
 R.exclusions.push(new Exclusion("^http://publish\\.aps\\.org/(image|stylesheet)s/"));
 a("aps.org");
 a("*.aps.org");
@@ -6934,6 +6934,8 @@ R = new RuleSet("GoogleMaps");
 R.rules.push(new Rule("^http://maps\\.(google|gstatic|googleapis)\\.com/", "https://maps.$1.com/"));
 R.rules.push(new Rule("^http://maps\\.google\\.([^/]+)/", "https://maps.google.$1/"));
 R.rules.push(new Rule("^http://maps-api-ssl\\.google\\.com/", "https://maps-api-ssl.google.com/"));
+R.rules.push(new Rule("^https://maps\\.googleapis\\.com/map(files/lib/map_1_20\\.swf|sapi/publicapi\\?file=flashapi)", "http://maps.googleapis.com/map$1"));
+R.exclusions.push(new Exclusion("^http://maps\\.googleapis\\.com/map(?:files/lib/map_1_20\\.swf|sapi/publicapi\\?file=flashapi)"));
 a("maps.google.com");
 a("maps.gstatic.com");
 a("maps-api-ssl.google.com");
