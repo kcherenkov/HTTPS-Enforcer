@@ -3621,11 +3621,6 @@ R.rules.push(new Rule("^http://(www\\.)?codespeak\\.net/", "https://$1codespeak.
 a("codespeak.net");
 a("www.codespeak.net");
 
-R = new RuleSet("CodingTeam");
-R.rules.push(new Rule("^http://(www\\.)?codingteam\\.net/", "https://codingteam.net/"));
-a("codingteam.net");
-a("www.codingteam.net");
-
 R = new RuleSet("CoinDL");
 R.rules.push(new Rule("^http://(www\\.)?coindl\\.com/", "https://$1coindl.com/"));
 a("coindl.com");
