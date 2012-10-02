@@ -1988,7 +1988,7 @@ R.rules.push(new Rule("^http://(www\\.)?bn\\.com/", "https://www.barnesandnoble.
 R.rules.push(new Rule("^http://(?:www\\.)?barnesandnoble\\.com/", "https://www.barnesandnoble.com/"));
 R.rules.push(new Rule("^http://s?img([12])\\.imagesbn\\.com/", "https://simg$1.imagesbn.com/"));
 R.rules.push(new Rule("^http://img3\\.imagesbn\\.com/", "https://img3.imagesbn.com/"));
-R.exclusions.push(new Exclusion("http://www\\.barnesandnoble\\.com/[sw]/"));
+R.exclusions.push(new Exclusion("http://www\\.barnesandnoble\\.com/(?:google/ad\\?url=|[sw]/)"));
 a("bn.com");
 a("*.bn.com");
 a("barnesandnoble.com");
@@ -17305,7 +17305,7 @@ a("translatewiki.net");
 a("www.translatewiki.net");
 
 R = new RuleSet("Transmission (partial)");
-R.rules.push(new Rule("^http://(forum|trac)\\.transmissionbt\\.com/", "https://*.transmissionbt.com/"));
+R.rules.push(new Rule("^http://(forum|trac)\\.transmissionbt\\.com/", "https://$1.transmissionbt.com/"));
 a("*.transmissionbt.com");
 a("*.forum.transmissionbt.com");
 
@@ -20211,6 +20211,7 @@ a("*.zenfolio.com");
 a("cdn.zenfolio.net");
 
 R = new RuleSet("ZeniMax Media (partial)");
+R.rules.push(new Rule("^https?://cdn\\.bethsoft\\.com/", "https://d1bjnur3wbumt5.cloudfront.net/"));
 R.rules.push(new Rule("^http://(\\w+\\.)?bethsoft\\.com/", "https://$1bethsoft.com/"));
 R.exclusions.push(new Exclusion("^http://(cdnstatic|support)\\."));
 a("bethsoft.com");
